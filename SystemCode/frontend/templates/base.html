@@ -1,1 +1,24 @@
-<!--This is a demo html file-->
+{% block doc -%}
+<!DOCTYPE html>
+<html lang="en">{% block html_attribs %}{% endblock html_attribs %}
+{%-block html %}
+<head>
+    {%- block head %}
+    <title>{% block title %}{{title|default}}{% endblock title %}</title>
+    {%- block metas %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%- endblock metas %}
+    {%- endblock head %}
+</head>
+<body>
+    {% block body -%}
+    <p>This is the basic html file</p>
+    {% block scripts %}
+    {%- endblock scripts %}
+    {%- endblock body %}
+</body>
+{%- endblock html %}
+</html>
+{% endblock doc -%}

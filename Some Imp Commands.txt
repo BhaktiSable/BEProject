@@ -1,0 +1,5 @@
+*To Clone the main branch to our branch
+	git fetch
+	git rebase main
+
+cd ..--go back to parent directory
