@@ -1,0 +1,181 @@
+course_link,Title,Instructor,duration,level,rating
+https://www.pluralsight.com/courses/network-address-translation-operation-configuration,Network Address Translation Operation and Configuration,by Ross Bagurdes,1h 38m,Intermediate,-35
+https://www.pluralsight.com/courses/android-broadening-app-appeal-reach,Broadening Android App Appeal and Reach,by Jim Wilson,4h 4m,Advanced,-52
+https://www.pluralsight.com/courses/essential-tools-red-hat-enterprise-linux,Understanding and Using Essential Tools for Enterprise Linux 7,by Anthony Nocentino,3h 52m,Beginner,-75
+https://www.pluralsight.com/courses/linux-high-availability-cluster-management-lpic-3,Linux High Availability Cluster Management,by David Clinton,1h 26m,Intermediate,-25
+https://www.pluralsight.com/courses/linux-managing-software-debian-software-management,Managing Software in Linux with Debian Software Management,by Andrew Mallett,1h 58m,Beginner,-25
+https://www.pluralsight.com/courses/modern-desktops-policies-profiles,Managing Windows 10/11 Desktops: Policies and Profiles,by Glenn Weadock,2h 34m,Intermediate,-15
+https://www.pluralsight.com/courses/designing-deploying-exchange-2016-70-345-mailbox-databases,Designing/Deploying Exchange 2016: Mailbox Databases,by Paul Cunningham,3h 55m,Intermediate,-52
+https://www.pluralsight.com/courses/design-database-environment-sql-server-2014-70-465,Design a Database Environment with SQL Server 2014 (70-465),by Pluralsight,1h 13m,Intermediate,-25
+https://www.pluralsight.com/courses/linux-administration-sed-awk,Linux Administration with sed and awk,by Andrew Mallett,3h 59m,Intermediate,-245
+https://www.pluralsight.com/courses/windows-server-2016-virtualization-securing,Securing Windows Server 2016 Virtualization,by Robert McMillen,2h 30m,Intermediate,-15
+https://www.pluralsight.com/courses/agile-real-world,Agile in the Real World,by Jeremy Jarrell,2h 8m,Intermediate,-524
+https://www.pluralsight.com/courses/windows-10-installing-configuring,Installing and Configuring Windows 10/11,by Andrew Bettany,2h 36m,Intermediate,-35
+https://www.pluralsight.com/courses/maintaining-monitoring-troubleshooting-kubernetes,"Maintaining, Monitoring and Troubleshooting Kubernetes",by Anthony Nocentino,2h 14m,Intermediate,-59
+https://www.pluralsight.com/courses/understanding-aws-core-services,Understanding AWS Core Services,by David Tucker,2h 46m,Beginner,-523
+https://www.pluralsight.com/courses/configuring-cisco-router,Configuring a Cisco Router,by Ross Bagurdes,2h 44m,Intermediate,-52
+https://www.pluralsight.com/courses/cisco-enterprise-networks-basic-networking-ip-fundamentals,Cisco Enterprise Networks: Basic Networking and IP Fundamentals,by Ben Piper,1h 45m,Intermediate,-85
+https://www.pluralsight.com/courses/designing-deploying-exchange-2016-70-345-recipients,Designing/Deploying Exchange 2016: Recipients & Security,by Paul Cunningham,2h 49m,Intermediate,-25
+https://www.pluralsight.com/courses/linux-managing-web-services-lpic-2,Linux: Managing Web Services (LPIC-2),by Andrew Mallett,5h 10m,Intermediate,-35
+https://www.pluralsight.com/courses/android-leveraging-power-platform,Leveraging the Power of the Android Platform,by Jim Wilson,3h 2m,Advanced,-50
+https://www.pluralsight.com/courses/windows-server-2016-containers-implementing,Implementing Containers on Windows Server 2016,by Mike Pfeiffer,2h 23m,Intermediate,-65
+https://www.pluralsight.com/courses/windows-server-2016-connectivity-remote-access,Implementing Windows Server 2016 Connectivity and Remote Access,by Glenn Weadock,2h 56m,Intermediate,-25
+https://www.pluralsight.com/courses/agile-team-practice-fundamentals,Agile Team Practices with Scrum,by David Starr,3h 43m,Intermediate,-975
+https://www.pluralsight.com/courses/kubernetes-developers-core-concepts,Kubernetes for Developers: Core Concepts,by Dan Wahlin,4h 38m,Beginner,-625
+https://www.pluralsight.com/courses/message-queuing-amazon-sqs,Message Queuing with Amazon Simple Queue Service (SQS),by Daniel Donbavand,1h 22m,Intermediate,-55
+https://www.pluralsight.com/courses/managing-python-packages-virtual-environments,Managing Python Packages and Virtual Environments,by Reindert-Jan Ekker,1h 29m,Beginner,-195
+https://www.pluralsight.com/courses/integrating-qt-quick-cpp,Integrating Qt Quick 5 with C++,by Tod Gentille,3h 13m,Intermediate,-58
+https://www.pluralsight.com/courses/python-data-analysis-getting-started,Getting Started with Data Analysis Using Python 2,by Terry Toy,2h 23m,Beginner,-75
+https://www.pluralsight.com/courses/using-miniprofiler-aspdotnet-core,Using MiniProfiler in ASP.NET Core 4,by David Berry,34m,Beginner,-53
+https://www.pluralsight.com/courses/adding-graphics-web-pages-using-canvas-svg,Adding Graphics to Web Pages Using Canvas and SVG,by Mike Van Sickle,1h 42m,Beginner,-51
+https://www.pluralsight.com/courses/cryptography-big-picture,Cryptography: The Big Picture,by Matt Glass,1h 24m,Intermediate,-135
+https://www.pluralsight.com/courses/cplusplus-mocking-using-google-mock-advanced,Advanced C++ Mocking Using Google Mock 1,by Dror Helper,3h 48m,Intermediate,-45
+https://www.pluralsight.com/courses/client-side-react-router-4,Client Side React Router 4,by David Starr,1h 59m,Intermediate,-56
+https://www.pluralsight.com/courses/using-docker-aws,Using Docker on AWS with the Command Line,by David Clinton,1h 23m,Beginner,-35
+https://www.pluralsight.com/courses/approaching-automated-security-testing-devsecops,Approaching Automated Security Testing in DevSecOps,by Peter Mosmans,47m,Intermediate,-56
+https://www.pluralsight.com/courses/bootstrap-components-playbook,Bootstrap 5 Components: Playbook,by Jill Gundersen,1h 34m,Intermediate,-52
+https://www.pluralsight.com/courses/bootstrap-styling-typography-utilities,Adding Styling with Bootstrap Typography and Utilities,by Emmanuel Henri,48m,Intermediate,-25
+https://www.pluralsight.com/courses/parent-child-data-ef-mvc-knockout-ajax,"Parent-Child Data with EF, MVC, Knockout, Ajax, and Validation",by Adam Churvis,2h 33m,Intermediate,-522
+https://www.pluralsight.com/courses/isomorphic-react,Isomorphic React 16,by Daniel Stern,2h 44m,Intermediate,-65
+https://www.pluralsight.com/courses/codedui-testing-web-applications,Testing Web Applications with CodedUI,by Marcel de Vries,3h 47m,Intermediate,-152
+https://www.pluralsight.com/courses/new-in-centos-8,What’s New in CentOS 8,by Andrew Mallett,1h 57m,Intermediate,-15
+https://www.pluralsight.com/courses/working-javascript-modules,Working with JavaScript Modules,by Jonathan Mills,45m,Beginner,-258
+https://www.pluralsight.com/courses/google-cloud-kubernetes-engine-leveraging-advanced-features,Leveraging Advanced Features on the Google Cloud Kubernetes Engine,by Janani Ravi,2h 30m,Intermediate,-15
+https://www.pluralsight.com/courses/php-design-patterns,PHP Design Patterns,by Annapurna Agrawal,1h 19m,Intermediate,-35
+https://www.pluralsight.com/courses/tfs-2015,End-to-end Software Development with Team Foundation Server 2015,by Esteban Garcia,4h 25m,Intermediate,-59
+https://www.pluralsight.com/courses/state-of-dotnet-executive-briefing,State of .NET: Executive Briefing,by Brice Wilson,24m,Beginner,-52
+https://www.pluralsight.com/courses/merging-data-sources-r,Merging Data Sources with R 3,by Dan Tofan,1h 29m,Beginner,-15
+https://www.pluralsight.com/courses/google-cloud-compute-engine-solutions-choosing-implementing,Choosing and Implementing Google Cloud Compute Engine Solutions,by Janani Ravi,1h 58m,Beginner,-53
+https://www.pluralsight.com/courses/google-cloud-functions-getting-started,Google Cloud Functions: Getting Started,by James Wilson,2h 27m,Beginner,-50
+https://www.pluralsight.com/courses/data-storytelling-moving-beyond-static-data-visualizations,Data Storytelling: Moving Beyond Static Data Visualizations,by Troy Kranendonk,45m,Intermediate,-53
+https://www.pluralsight.com/courses/google-cloud-platform-iam-regulating-resource,Regulating Resource Usage Using Google Cloud IAM,by Vitthal Srinivasan,1h 54m,Beginner,-15
+https://www.pluralsight.com/courses/serilog-enrichers-getting-info-into-log-entries,Serilog 2 Enrichers: Getting Common Information into Log Entries,by Erik Dahl,33m,Intermediate,-35
+https://www.pluralsight.com/courses/visual-studio-team-services-migrate-tfs,Visual Studio Team Services: Migrating from TFS,by Scott Tate,3h 52m,Beginner,-15
+https://www.pluralsight.com/courses/visual-studio-2019-advanced-debugging,Advanced Debugging with Visual Studio 2019,by Kate Gregory,38m,Intermediate,-57
+https://www.pluralsight.com/courses/effective-testing-with-spring,Effective Automated Testing with Spring,by Billy Korando,2h 7m,Intermediate,-53
+https://www.pluralsight.com/courses/spring-framework-versioning-spring-data-rest-apis,Spring Framework: Versioning Spring Data REST APIs,by Craig Golightly,40m,Advanced,-52
+https://www.pluralsight.com/courses/tactics-tools-troubleshooting-front-end-web-development,Tactics and Tools for Troubleshooting Front-end Web Development,by Shelley Benhoff,1h 37m,Intermediate,-51
+https://www.pluralsight.com/courses/jira-integrations,Jira 8 Integrations,by Jim Weaver,1h 54m,Advanced,-45
+https://www.pluralsight.com/courses/secure-account-authentication-practices-asp-dot-net-core,Secure User Account and Authentication Practices in ASP.NET 3 and ASP.NET Core 3,by Erik Dahl,2h 15m,Intermediate,-25
+https://www.pluralsight.com/courses/real-time-web-dashboards-highcharts,Real-time Web Dashboards with Highcharts,by Ben Sullins,3h 14m,Beginner,-45
+https://www.pluralsight.com/courses/wireless-network-penetration-testing-advanced-techniques,Wireless Network Penetration Testing Advanced Techniques,by Ricardo Reimao,1h 23m,Intermediate,-15
+https://www.pluralsight.com/courses/maximizing-quality-visual-studio-team-services-test-hub,Maximizing Quality with Visual Studio Team Services Test Hub,by Scott Tate,3h 13m,Beginner,-15
+https://www.pluralsight.com/courses/angularjs-in-depth,AngularJS In-Depth,by Lukas Ruebbelke,4h 56m,Intermediate,-586
+https://www.pluralsight.com/courses/angular-2-first-look,Angular: First Look,by John Papa,4h 30m,Intermediate,-1105
+https://www.pluralsight.com/courses/solving-real-world-problems-sql-server-2016-query-store,Solving Real World Problems with SQL Server 2016 Query Store,by Gail Shaw,2h 1m,Intermediate,-52
+https://www.pluralsight.com/courses/whats-new-in-java-13,What’s New in Java 13,by Sander Mak,46m,Intermediate,-50
+https://www.pluralsight.com/courses/managing-azure-sql-server-database-performance,Managing Azure SQL Server Database Performance,by Hugo Barona,1h 31m,Advanced,-45
+https://www.pluralsight.com/courses/sql-server-databases-powershell,Accessing SQL Server Databases from Windows PowerShell,by Vlad Catrinescu,55m,Beginner,-59
+https://www.pluralsight.com/courses/sql-server-2016-integration-services,What's New in SQL Server 2016 Integration Services,by Stacia Misner Varga,3h 19m,Intermediate,-35
+https://www.pluralsight.com/courses/scraping-first-web-page-python,Scraping Your First Web Page with Python,by Janani Ravi,2h 39m,Beginner,-35
+https://www.pluralsight.com/courses/azure-sql-database-diagnosing-performance-issues-dmvs,Azure SQL Database: Diagnosing Performance Issues with DMVs,by Glenn Berry,1h 30m,Intermediate,-15
+https://www.pluralsight.com/courses/secure-coding-preventing-insufficient-logging-monitoring,Secure Coding: Preventing Insufficient Logging and Monitoring,by Peter Mosmans,1h 23m,Intermediate,-58
+https://www.pluralsight.com/courses/secure-coding-using-components-known-vulnerabilities,Secure Coding: Using Components with Known Vulnerabilities,by Peter Mosmans,1h 13m,Intermediate,-45
+https://www.pluralsight.com/courses/react-express-full-stack-app-building,Building a Full Stack App with React 16 and Express 4,by Daniel Stern,3h 13m,Advanced,-151
+https://www.pluralsight.com/courses/windows-server-2016-dns,Implementing Windows Server 2016 DNS,by Orin Thomas,5h 47m,Intermediate,-89
+https://www.pluralsight.com/courses/windows-server-2016-hyper-v,Implementing Windows Server 2016 Hyper-V,by Greg Shields,4h 49m,Intermediate,-64
+https://www.pluralsight.com/courses/windows-server-2016-implementing-software-defined-networking,Implementing Windows Server 2016 Software Defined Networking,by John Savill,1h 58m,Intermediate,-32
+https://www.pluralsight.com/courses/windows-server-2016-maintaining-monitoring,Maintaining and Monitoring Windows Server 2016,by Mike Pfeiffer,1h 43m,Intermediate,-27
+https://www.pluralsight.com/courses/windows-server-2016-directaccess-managing-supporting,Managing and Supporting DirectAccess with Windows Server 2016,by Richard Hicks,3h 33m,Advanced,-17
+https://www.pluralsight.com/courses/windows-server-2016-network-solutions,Implement Windows Server 2016 High Performance Network Solutions,by Orin Thomas,2h 14m,Advanced,-14
+https://www.pluralsight.com/courses/windows-server-2016-manage-maintain-ad-domain-services,Manage and Maintain Active Directory Domain Services in Windows Server 2016,by Greg Shields,3h 52m,Intermediate,-49
+https://www.pluralsight.com/courses/managing-cisco-products-advanced-api-methods,Managing Cisco Products Using Advanced API-based Methods,by Nick Russo,2h 42m,Intermediate,-27
+https://www.pluralsight.com/courses/sqlserver-database-fundamentals,SQL Server: Understanding Database Fundamentals (98-364),by Tim Radney,2h 6m,Beginner,-80
+https://www.pluralsight.com/courses/implementing-managing-office-365-advanced-threat-protection,Implementing and Managing Office 365 Advanced Threat Protection,by Michael Bender,1h 32m,Intermediate,-22
+https://www.pluralsight.com/courses/implementing-analytics-real-time-data-aws,Implementing Analytics and Real Time Data in AWS,by Andru Estes,2h 5m,Advanced,-18
+https://www.pluralsight.com/courses/security-analysis-cysa-plus,Security Analysis for CompTIA CySA+,by Dale Meredith,2h 35m,Intermediate,-38
+https://www.pluralsight.com/courses/securing-data-secrets-aws,Securing Data and Secrets on AWS,by Pluralsight,1h 19m,Intermediate,-23
+https://www.pluralsight.com/courses/agile-release-management,Agile Release Management,by Jan-Erik Sandberg,1h 32m,Intermediate,-306
+https://www.pluralsight.com/courses/implementing-windows-server-2016-dhcp,Implementing Windows Server 2016 DHCP,by Michael Bender,2h 51m,Intermediate,-38
+https://www.pluralsight.com/courses/network-services-cisco-ccna,Network Services for Cisco CCNA,by Ross Bagurdes,1h 4m,Intermediate,-16
+https://www.pluralsight.com/courses/android-enhancing-application-experience,Enhancing the Android Application Experience,by Jim Wilson,4h 51m,Intermediate,-120
+https://www.pluralsight.com/courses/android-managing-app-data-sqlite,Managing Android App Data with SQLite,by Jim Wilson,4h 27m,Intermediate,-82
+https://www.pluralsight.com/courses/exam-alert-deploy-manage-az-compute-resources,Exam Alert: Deploy and Manage Azure Compute Resources,by Michael Teske,22m,Beginner,-23
+https://www.pluralsight.com/courses/basic-security-concepts-cisco-networks,Basic Security Concepts for Cisco Networks,by Ross Bagurdes,1h 34m,Intermediate,-34
+https://www.pluralsight.com/courses/microsoft-azure-administrator-create-configure-vm,Microsoft Azure Administrator: Create and Configure Virtual Machines,by Michael Teske,36m,Beginner,-48
+https://www.pluralsight.com/courses/microsoft-azure-solutions-architect-implement-nosql-databases-strategy,Microsoft Azure Solutions Architect: Implement a NoSQL Databases Strategy,by Jurgen Kevelaers,56m,Advanced,-28
+https://www.pluralsight.com/courses/incident-detection-investigation-qradar-apps,Incident Detection and Investigation with QRadar Apps,by Ricardo Reimao,1h 53m,Intermediate,-18
+https://www.pluralsight.com/courses/advanced-networking-security-aws,Advanced Network Security on AWS,by Miguel  Saavedra,1h 34m,Advanced,-11
+https://www.pluralsight.com/courses/introduction-cisco-automation-software-defined-networks,Introduction to Cisco Automation and Software Defined Networks,by Ross Bagurdes,1h 24m,Intermediate,-31
+https://www.pluralsight.com/courses/introduction-dynamic-routing,Introduction to Dynamic Routing,by Ross Bagurdes,3h 20m,Intermediate,-29
+https://www.pluralsight.com/courses/linux-system-security-lpic-2,Linux: System Security (LPIC-2),by Andrew Mallett,3h 6m,Intermediate,-17
+https://www.pluralsight.com/courses/building-packet-tracer-labs-ccna-study-fundamentals,Building Packet Tracer Labs for CCNA Study: Fundamentals,by Ross Bagurdes,5h 20m,Intermediate,-22
+https://www.pluralsight.com/courses/designing-deploying-exchange-2016-70-345-client-access,Designing/Deploying Exchange 2016: Client Access,by Paul Cunningham,3h 27m,Intermediate,-38
+https://www.pluralsight.com/courses/building-configuring-troubleshooting-acls,"Building, Configuring, and Troubleshooting ACLs",by Ross Bagurdes,2h 37m,Intermediate,-27
+https://www.pluralsight.com/courses/linux-kernel-system-startup,Linux Kernel and System Startup (LPIC-2),by Andrew Mallett,4h 50m,Intermediate,-87
+https://www.pluralsight.com/courses/linux-advanced-file-system-management,Linux Advanced File System Management (LPIC-2),by Andrew Mallett,4h 9m,Intermediate,-66
+https://www.pluralsight.com/courses/analyzing-data-aws,Analyzing Data on AWS,by Clarke Bishop,2h 12m,Intermediate,-28
+https://www.pluralsight.com/courses/processing-data-aws,Processing Data on AWS,by Dan Tofan,1h 57m,Intermediate,-46
+https://www.pluralsight.com/courses/deploying-network-configuration-management-telemetry-solutions,Deploying Network Configuration Management and Telemetry Solutions,by Nick Russo,2h 38m,Intermediate,-28
+https://www.pluralsight.com/courses/introduction-networking-cisco-ccna,Introduction to Networking for Cisco CCNA,by Ross Bagurdes,1h 54m,Intermediate,-182
+https://www.pluralsight.com/courses/scrum-development-jira-agile,Scrum Development with Jira & JIRA Agile,by Xavier Morera,1h 27m,Intermediate,-844
+https://www.pluralsight.com/courses/getting-started-linux-system-administration,Getting Started with Linux System Administration,by David Clinton,1h 9m,Beginner,-174
+https://www.pluralsight.com/courses/configuring-managing-microsoft-365-workload-integrations,Configuring and Managing Microsoft 365 Workload Integrations,by Vlad Catrinescu,4h 39m,Intermediate,-11
+https://www.pluralsight.com/courses/sql-server-2012-querying-pt1,SQL Server 2012 Querying (70-461) Part 1,by Christopher Harrison,5h 12m,Intermediate,-1820
+https://www.pluralsight.com/courses/cloud-computing-fundamentals-cloud-concepts,Cloud Computing Fundamentals: Cloud Concepts,by Eduardo Freitas,1h 34m,Beginner,-218
+https://www.pluralsight.com/courses/network-layer-addressing-subnetting,Network Layer Addressing and Subnetting,by Ross Bagurdes,3h 48m,Intermediate,-106
+https://www.pluralsight.com/courses/getting-started-linux,Getting Started with Linux,by David Clinton,1h 43m,Beginner,-382
+https://www.pluralsight.com/courses/getting-started-linux-command-line,Getting Started with the Linux Command Line,by David Clinton,1h 3m,Beginner,-280
+https://www.pluralsight.com/courses/managing-kubernetes-api-server-pods,Managing the Kubernetes API Server and Pods,by Anthony Nocentino,3h 44m,Intermediate,-164
+https://www.pluralsight.com/courses/configuring-managing-kubernetes-networking-services-ingress,"Configuring and Managing Kubernetes Networking, Services, and Ingress",by Anthony Nocentino,2h 5m,Intermediate,-129
+https://www.pluralsight.com/courses/configuring-managing-kubernetes-storage-scheduling,Configuring and Managing Kubernetes Storage and Scheduling,by Anthony Nocentino,2h 50m,Intermediate,-100
+https://www.pluralsight.com/courses/introduction-security-architecture-aws,Introduction to Security and Architecture on AWS,by David Tucker,1h 58m,Beginner,-271
+https://www.pluralsight.com/courses/amazon-aurora-best-practices,Amazon Aurora: Best Practices,by Kim Schmidt,3h 59m,Advanced,-16
+https://www.pluralsight.com/courses/amazon-dynamodb-best-practices,Amazon DynamoDB: Best Practices,by Raj Saha,3h 17m,Advanced,-22
+https://www.pluralsight.com/courses/azure-sql-database-dba,Azure SQL Database for the SQL Server DBA,by Warner Chaves,2h 46m,Intermediate,-123
+https://www.pluralsight.com/courses/agile-requirements-process-idea-to-minimum-viable-product,Agile Requirements Process: From Idea to Minimum Viable Product,by Rusty Divine,2h 33m,Intermediate,-248
+https://www.pluralsight.com/courses/automating-cisco-meraki-operations-using-apis,Automating Cisco Meraki Operations Using APIs,by Nick Russo,1h 28m,Intermediate,-12
+https://www.pluralsight.com/courses/implementing-application-layer-protocols-cisco-networks,Implementing Application Layer Protocols for Cisco Networks,by Ross Bagurdes,2h 45m,Intermediate,-17
+https://www.pluralsight.com/courses/collecting-data-aws,Collecting Data on AWS,by Fernando Medina Corey,2h 18m,Intermediate,-29
+https://www.pluralsight.com/courses/juniper-networks-jncis-ent-jn0-343-layer-2-switching-vlans,Layer 2 Switching and VLANs in Junos OS,by Martin Brown,3h 33m,Intermediate,-16
+https://www.pluralsight.com/courses/juniper-networks-jncis-ent-jn0-343-spanning-tree,Junos OS and the Spanning Tree Protocol,by Martin Brown,1h 39m,Intermediate,-10
+https://www.pluralsight.com/courses/citrix-virtual-apps-desktops-deploy-on-premises-site,Citrix Virtual Apps and Desktops (CVAD): Deploy an On-Premises Site,by Greg Shields,2h 4m,Intermediate,-12
+https://www.pluralsight.com/courses/citrix-virtual-apps-desktops-introduce-cvad-architecture,Citrix Virtual Apps and Desktops (CVAD): Introduce the CVAD Architecture,by Greg Shields,1h 16m,Intermediate,-21
+https://www.pluralsight.com/courses/introduction-leadership-management-developers,Introduction to Leadership and Management for Developers,by Dan Appleman,4h 33m,Intermediate,-624
+https://www.pluralsight.com/courses/securing-monitoring-aws-workloads,Securing and Monitoring AWS Workloads,by Saravanan Dhandapani,1h 58m,Advanced,-18
+https://www.pluralsight.com/courses/cloud-computing-fundamentals-management-technical-operations,Cloud Computing Fundamentals: Management and Technical Operations,by Jurgen Kevelaers,1h 12m,Beginner,-10
+https://www.pluralsight.com/courses/ethernet-operation-switch-configuration,Ethernet Operation and Switch Configuration,by Ross Bagurdes,3h 3m,Intermediate,-46
+https://www.pluralsight.com/courses/configuring-governance-compliance-microsoft-teams-365-groups,Configuring Governance and Compliance for Microsoft Teams and Microsoft 365 Groups,by Vlad Catrinescu,4h 56m,Intermediate,-30
+https://www.pluralsight.com/courses/advanced-network-system-administration-lfce,Advanced Linux Network and System Administration,by Anthony Nocentino,5h 44m,Intermediate,-32
+https://www.pluralsight.com/courses/cisco-enterprise-networks-vlans-trunking,Cisco Enterprise Networks: VLANs and Trunking,by Ben Piper,2h 23m,Intermediate,-20
+https://www.pluralsight.com/courses/cisco-collaboration-core-infrastructure-design,Cisco Collaboration Core: Infrastructure and Design,by Sean Douglas,3h 15m,Intermediate,-14
+https://www.pluralsight.com/courses/cisco-enterprise-networks-bgp-path-control,Cisco Enterprise Networks: BGP and Path Control,by Ben Piper,2h 23m,Intermediate,-10
+https://www.pluralsight.com/courses/cisco-wireless-basic-operation-configuration,Cisco Wireless Basic Operation and Configuration,by Ross Bagurdes,1h 34m,Intermediate,-26
+https://www.pluralsight.com/courses/design-database-structure-sql-server-2014-70-465,Design a Database Structure with SQL Server 2014 (70-465),by Pluralsight,2h 36m,Intermediate,-60
+https://www.pluralsight.com/courses/designing-deploying-exchange-2016-70-345-transport,Designing/Deploying Exchange 2016: Transport,by Paul Cunningham,2h 59m,Intermediate,-33
+https://www.pluralsight.com/courses/intro-infosec-cloud-computing-ccsk,Introduction to Information Security within Cloud Computing,by Dr. Lyron H. Andrews,1h 20m,Beginner,-26
+https://www.pluralsight.com/courses/threat-vulnerability-management-cysa-plus,Threat and Vulnerability Management for CompTIA CySA+,by Dale Meredith,3h 13m,Intermediate,-40
+https://www.pluralsight.com/courses/designing-implementing-aws-networks,Designing and Implementing AWS Networks,by Michael Brown,2h 22m,Advanced,-18
+https://www.pluralsight.com/courses/planning-sharepoint-server-2016-architecture-integrations,Planning for SharePoint Server 2016: Logical Architecture and Integrations,by Vlad Catrinescu,1h 36m,Intermediate,-31
+https://www.pluralsight.com/courses/planning-sharepoint-server-2016-topology-services,Planning for SharePoint Server 2016: Physical Topology and Services,by Vlad Catrinescu,3h 32m,Intermediate,-47
+https://www.pluralsight.com/courses/installing-configuring-macos,Installing and Configuring macOS,by Herta Nava,2h 10m,Intermediate,-18
+https://www.pluralsight.com/courses/make-cost-optimized-decisions-aws,Make Cost-Optimized Decisions on AWS,by Michael Brown,1h 29m,Intermediate,-86
+https://www.pluralsight.com/courses/automating-cisco-asa-firepower-policies-using-apis,Automating Cisco ASA and Firepower Policies Using APIs,by Nick Russo,2h 5m,Intermediate,-10
+https://www.pluralsight.com/courses/windows-server-2016-high-availability,Implementing High Availability in Windows Server 2016,by Greg Shields,5h 17m,Intermediate,-42
+https://www.pluralsight.com/courses/windows-server-2016-storage-solutions,Implementing Windows Server 2016 Storage Solutions,by Mike Pfeiffer,2h 27m,Intermediate,-62
+https://www.pluralsight.com/courses/windows-server-2016-core-networking,Implementing and Securing Windows Server 2016 Core Networking,by Ben Piper,2h 43m,Intermediate,-26
+https://www.pluralsight.com/courses/windows-server-2016-identity-federation-access-solutions,Implementing Windows Server 2016 Identity Federation and Access,by Neil Morrissey,3h 25m,Intermediate,-43
+https://www.pluralsight.com/courses/windows-server-2016-planning-implementing-directaccess,Planning and Implementing DirectAccess with Windows Server 2016,by Richard Hicks,2h 31m,Intermediate,-30
+https://www.pluralsight.com/courses/designing-hybrid-networks-aws,Designing Hybrid Networks in AWS,by Michael Brown,2h 9m,Advanced,-21
+https://www.pluralsight.com/courses/sql-2012-database-administration-pt3,SQL Server 2012 Database Administration (70-462) Part 3,by Sean McCown,4h 51m,Intermediate,-341
+https://www.pluralsight.com/courses/sql-server-compliance-and-auditing,"Practical SQL Server Security, Compliance, and Auditing",by Russ Thomas,3h 40m,Intermediate,-38
+https://www.pluralsight.com/courses/microsoft-azure-administrator-automate-deployment-configuration-vm,Microsoft Azure Administrator: Automate Deployment and Configuration of Virtual Machines,by Michael Teske,34m,Beginner,-41
+https://www.pluralsight.com/courses/microsoft-azure-solutions-architect-design-application-architecture,Microsoft Azure Solutions Architect: Design an Application Architecture,by Reza Salehi,1h 51m,Advanced,-28
+https://www.pluralsight.com/courses/microsoft-azure-administrator-create-configure-containers,Microsoft Azure Administrator: Create and Configure Containers,by Michael Teske,38m,Beginner,-37
+https://www.pluralsight.com/courses/android-tools-testing,Working with Android Tools and Testing,by Jim Wilson,2h 50m,Beginner,-146
+https://www.pluralsight.com/courses/introduction-cisco-certified-devnet-professional-certification,Introduction to the Cisco Certified DevNet Professional Certification,by Nick Russo,17m,Intermediate,-22
+https://www.pluralsight.com/courses/agile-fundamentals,Agile Fundamentals,by Stephen Haunts,2h 39m,Intermediate,-2276
+https://www.pluralsight.com/courses/vlan-operation-configuration,VLAN Operation and Configuration,by Ross Bagurdes,2h 21m,Intermediate,-49
+https://www.pluralsight.com/courses/cisco-enterprise-networks-implementing-ospf,Cisco Enterprise Networks: Implementing OSPF,by Ben Piper,2h 16m,Intermediate,-67
+https://www.pluralsight.com/courses/linux-networking-advanced-lfce,LFCE: Advanced Linux Networking,by Anthony Nocentino,2h 45m,Intermediate,-77
+https://www.pluralsight.com/courses/install-configure-adds-windows-server-2016,Install and Configure Active Directory Domain Services in Windows Server 2016,by Greg Shields,3h 19m,Intermediate,-113
+https://www.pluralsight.com/courses/kubernetes-installation-configuration-fundamentals,Kubernetes Installation and Configuration Fundamentals,by Anthony Nocentino,3h 4m,Intermediate,-446
+https://www.pluralsight.com/courses/managing-kubernetes-controllers-deployments,Managing Kubernetes Controllers and Deployments,by Anthony Nocentino,2h 48m,Intermediate,-98
+https://www.pluralsight.com/courses/sql-2012-database-administration-pt2,SQL Server 2012 Database Administration (70-462) Part 2,by Sean McCown,5h 1m,Intermediate,-318
+https://www.pluralsight.com/courses/automating-cisco-sd-wan-operations-using-apis,Automating Cisco SD-WAN Operations Using APIs,by Nick Russo,1h 33m,Intermediate,-17
+https://www.pluralsight.com/courses/automating-cisco-dna-center-operations-using-apis,Automating Cisco DNA Center Operations Using APIs,by Nick Russo,1h 24m,Intermediate,-14
+https://www.pluralsight.com/courses/akkadotnet-signalr-stateful-reactive-concurrent-spas,Stateful Reactive Concurrent SPAs with SignalR and Akka.NET 1,by Jason Roberts,2h 35m,Intermediate,-116
+https://www.pluralsight.com/courses/managed-instance-groups-building-scalable-compute-solutions,Building Scalable Compute Solutions with Managed Instance Groups,by Vitthal Srinivasan,2h 6m,Intermediate,-10
+https://www.pluralsight.com/courses/constructing-ui-angular,Constructing a User Interface with Angular,by David Mann,4h 34m,Intermediate,-78
+https://www.pluralsight.com/courses/managing-modern-software-dependency-ecosystem,Managing the Modern Software Dependency Ecosystem,by Troy Hunt,29m,Intermediate,-42
+https://www.pluralsight.com/courses/windows-workflows-powershell,Windows Workflows with Windows PowerShell,by Thomas Lee,2h 31m,Intermediate,-28
