@@ -1,0 +1,183 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
+
+
+/* This pen */
+body {
+    font-family: "Baloo 2", cursive;
+    font-size: 16px;
+    color: #ffffff;
+    text-rendering: optimizeLegibility;
+    font-weight: initial;
+}
+
+
+
+
+.light {
+    background: #f3f5f7;
+}
+
+a,
+a:hover {
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+
+
+/* Cards */
+.postcard {
+    flex-wrap: wrap;
+    display: flex;
+
+    box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
+    border-radius: 10px;
+    margin: 0 0 2rem 0;
+    overflow: hidden;
+    position: relative;
+    color: #140707;
+}
+
+.light {
+    background-color: #e1e5ea;
+}
+
+
+
+a {
+    color: inherit;
+}
+
+h1,
+.h1 {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.small {
+    font-size: 80%;
+}
+
+.postcard__title {
+    font-size: 1.75rem;
+}
+
+.postcard__img {
+    max-height: 180px;
+    width: 100%;
+    object-fit: cover;
+    position: relative;
+}
+
+.postcard__img_link {
+    display: contents;
+}
+
+
+
+.postcard__text {
+    padding: 1.5rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.infoBox{
+    padding: 1rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.postcard__preview-txt {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: justify;
+    height: 100%;
+    width: 80%;
+    
+}
+
+.postcard__tagbox {
+    display: flex;
+    flex-flow: row wrap;
+    font-size: 14px;
+    margin: 20px 0 0 0;
+    padding: 0;
+    justify-content: center;
+}
+
+.tag__item {
+    display: inline-block;
+    background: rgba(14, 237, 237, 0.4);
+    border-radius: 3px;
+    padding: 2.5px 10px;
+    margin: 0 5px 5px 0;
+    cursor: default;
+    user-select: none;
+
+}
+
+
+
+
+
+@media screen and (min-width: 769px) 
+{
+    .postcard {
+        flex-wrap: inherit;
+    }
+
+    .postcard >.postcard__title {
+        font-size: 2rem;
+    }
+
+    .postcard__tagbox {
+        justify-content: start;
+    }
+
+    .postcard__img {
+        max-width: 300px;
+        max-height: 100%;
+
+    }
+
+    .postcard__text {
+        padding: 3rem;
+        width: 100%;
+    }
+
+
+
+}
+
+
+    @media screen and (min-width: 1024px) {
+        .postcard__text {
+            padding: 1rem 1.5rem;
+        }
+
+        .postcard__text:before {
+            content: "";
+            position: absolute;
+            display: block;
+
+            top: -20%;
+            height: 130%;
+            width: 55px;
+        }
+
+
+
+     
+
+    }
+
+
+
+    body{background:#eee}
+    .ratings i{font-size: 16px;color: red}
+    .strike-text{color: red;text-decoration: line-through}
+    .product-image{width: 100%}
+    .dot{height: 7px;width: 7px;margin-left: 6px;margin-right: 6px;margin-top: 3px;background-color: blue;border-radius: 50%;display: inline-block}
+    .spec-1{color: #938787;font-size: 15px}h5{font-weight: 400}.para{font-size: 16px}
