@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block navbar %}
+
+<div class="container-fluid">
+    {% include 'navbar.html' %}
+</div>
+{% endblock %}
+{% block app_content %}
+<div class="container">
+    <br>
+    <form method="POST" ,action="">
+        <div class="jumbotron">
+            <div class="form">
+                <fieldset>
+                    <div class="group-form">
+                        {% import 'bootstrap/wtf.html' as wtf %}
+                        {{ wtf.quick_form(form) }}
+                        <!-- {{ wtf.form_field(form.topic) }}
+                        {{ form.duration.label }}</b>
+                        {{ wtf.form_field(form.duration) }}
+                        <b>{{ form.difficulty.label }}</b>
+                        {{ wtf.form_field(form.difficulty) }}
+                        <b>{{ form.freePaid.label }}</b>
+                        {{ wtf.form_field(form.freePaid) }}
+                        <br>
+                        <button class="btn" type="submit">{{wtf.form_field(form.recommend) }}</button> -->
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <br>
+    </form>
+</div>
+{% endblock app_content %}

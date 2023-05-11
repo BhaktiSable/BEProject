@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+<!-- background-color:#877BAE; -->
+{% block navbar %}
+<div class="container-fluid">
+    {% include 'navbar.html' %}
+</div>
+{% endblock %}
+{% block app_content %}
+<div class="container">
+    <div class="jumbotron" style="margin-top:8%;margin-bottom:5%;padding:5%">
+        <h1 class="display-4">Welcome to the Course Recommendation System</h1>
+        <p class="lead">Find the courses that match your interests and skills</p>
+        <a class="btn btn-lg" href="{{url_for('login_new')}}" role="button">Get Started</a>
+    </div>
+</div>
+{% endblock %}
