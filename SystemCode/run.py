@@ -1,5 +1,4 @@
 from frontend import app
-<<<<<<< HEAD
 from threading import Timer
 import os
 import webbrowser
@@ -17,8 +16,3 @@ if __name__ == '__main__':
  
 
     
-=======
-
-if __name__=="__main__":
-    app.run(debug=True)
->>>>>>> 6c0e89db97f4816598271558c6e63692985f1fae

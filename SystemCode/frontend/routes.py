@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import numpy as np
 
 from flask import render_template, flash, redirect, url_for, request, jsonify
@@ -102,51 +101,6 @@ def login():
     if current_user.is_authenticated:
         return redirect(url_for('home'))
     form = LoginForm()
-=======
-from flask import render_template, session,url_for,redirect,flash,request
-from frontend import app
-from frontend.forms import SignupForm, LoginForm,SurveyForm,CareerInterstForm
-from flask_login import login_user, login_required, current_user, logout_user
-from frontend.models import User, Query, Course, Favourite, Recommendation
-from frontend import bcrypt, db
-from frontend.models import User,Course
-# from Recommendation import recommend
-from Recommendation.recommend import recommend_default
-from Recommendation.recommend import recommend
-from Recommendation.recommend import load_pickle,tfidf_vectorizer_filepath,tfidf_data_filepath,categorical_data_filepath
-import pytz
-import numpy as np
-import config
-from Recommendation.recommend_job import recommend_job_role_based
-# Initialize for Default 10 most popular courses
-rating_tuples = db.session.query(Course.popularity_index).order_by(Course.courseID)
-rating_data = np.array([x[0] for x in rating_tuples])
-default_courses = recommend_default(rating_data)
-
-
-
-# Initialized Data for Recommender Module
-tfidf_vectorizer = load_pickle(tfidf_vectorizer_filepath)
-tfidf_data = load_pickle(tfidf_data_filepath)
-categorical_data = load_pickle(categorical_data_filepath)
-
-@app.route('/')
-def index():
-    return render_template('index.html')
-@app.route('/home')
-@login_required
-def home():
-    title = 'Course Recommender'
-    if not current_user.is_authenticated:
-        return redirect(url_for('/'))
-    return render_template('home.html',title=title,home=True)
-@app.route('/login', methods=['GET', 'POST'])
-def login_new():
-    title = 'Login'
-    if current_user.is_authenticated:
-        return redirect(url_for('home'))
-    form=LoginForm()
->>>>>>> 6c0e89db97f4816598271558c6e63692985f1fae
     if form.validate_on_submit():
         username = form.username.data
         password = form.password.data

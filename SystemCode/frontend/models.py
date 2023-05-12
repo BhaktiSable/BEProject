@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from flask_login import UserMixin
 from datetime import datetime
 
@@ -9,16 +8,6 @@ from frontend import db, login
 def load_user(user_id):
     return User.query.filter_by(userID=user_id).first()
 
-=======
-from flask_login import UserMixin,login_user,login_manager,login_user,LoginManager,login_required,logout_user,current_user
-from datetime import datetime
-
-from frontend import db,app,login_manager
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
->>>>>>> 6c0e89db97f4816598271558c6e63692985f1fae
 
 class User(db.Model, UserMixin):
     userID = db.Column(db.Integer, primary_key=True)

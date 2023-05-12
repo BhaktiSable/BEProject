@@ -1,30 +1,7 @@
 from flask import Flask
-
-<<<<<<< HEAD
-=======
-from flask_bootstrap import Bootstrap
->>>>>>> 6c0e89db97f4816598271558c6e63692985f1fae
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
-
-<<<<<<< HEAD
-from config import WebappConfig
-
-app = Flask(__name__)
-app.config.from_object(WebappConfig)
-
-
-db = SQLAlchemy(app)
-bcrypt = Bcrypt(app)
-login = LoginManager(app)
-login.login_view = 'login'
-login.login_message = 'You must login to access this page'
-login.login_message_category = 'info'
-
-
-from frontend.routes import *
-=======
 
 app = Flask(__name__)
 
@@ -58,4 +35,3 @@ with app.app_context():
 app.app_context().push()
 
 from frontend.routes import *
->>>>>>> 6c0e89db97f4816598271558c6e63692985f1fae
