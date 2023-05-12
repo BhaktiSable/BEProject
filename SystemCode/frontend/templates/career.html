@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+<input type="text" id="my_field" name="Name" placeholder="Enter Your Name"/>
+<input type="text" id="country" name="country" value="Career" readonly><br><br>
+<br>
+<button onclick="disable()">Disable</button>
+<button onclick="enable()">Change Career</button>
+<script>
+  function disable(){
+	document.getElementById("my_field").disabled = "true";
+  }
+  function enable(){
+	document.getElementById("my_field").disabled = "";
+  }
+</script>
+</body>
+</html>
