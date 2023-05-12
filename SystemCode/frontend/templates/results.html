@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block navbar %}
+<div class="container-fluid">
+    {% include 'navbar.html' %}
+</div>
+{% endblock %}
+
+{% block app_content %}
+    {% if query %} <!-- to display the results of a new search -->
+        <h2>Here are the recommendations based on your preferences</h2>
+    {% else %} <!-- to display the results (course and details) of a past search in a searchId -->
+        <h2>Here are the recommendations based on your previous search</h2>
+    {% endif %}
+        <br>
+        {% for course in rec_list %}
+            <div class="card text-left">
+                <div class="panel panel-default" style="background-color:white">
+                    <div class="row justify-content-center">
+                        <div class="col-md-4">
+                            <img class="panel-img rounded" src={{course.image_url}} alt="Card image cap">
+                        </div>
+                        <div class="col-md-8">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><b>{{ course.title }}</b></h3>
+                            <h6><b><i>{{ course.platform }} | offered by {{course.provider}}</i></b></h6>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-md-9">
+                                <h6>Language: {{ course.language }} | Subtitles: {{course.subtitle}}</h6>
+                                <h6>Difficulty: {{ course.difficulty }}</h6>
+                                <h6>Duration: {{ course.duration }}</h6>
+                                <h6>{{ course.free_option }}</h6>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="{{ course.url }}" class="btn btn-primary pull-right" target="_blank" rel="noopener noreferrer">More info</a>
+                                    <button class="btn btn-default swap pull-right favouriteButton" type="button"  id="{{course.courseID}}">
+                                    {% if course.courseID in favlist %}
+                                        <span class="glyphicon glyphicon-heart"></span>
+                                    {% else %}
+                                        <span class="glyphicon glyphicon-heart-empty"></span>
+                                    {% endif %}
+                                    </button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+{% endblock %}

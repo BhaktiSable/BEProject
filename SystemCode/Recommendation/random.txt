@@ -1,0 +1,318 @@
+
+import csv
+# with open('job_skills.csv', 'r') as file:
+#     reader = csv.reader(file)
+#     for row in reader:
+#         print(row)
+
+# job_roles=pd.read_csv('job_skills.csv')
+# job_roles.head(10)
+
+
+
+# Recommendation module
+# Takes user input and returns a sorted list of recommended courses.
+
+# Initialize Library Setup
+
+job_roles_df=pd.read_csv('C:/Users/DELL/Desktop/Course_Recommendation/BEProject/SystemCode/job_skills.csv')
+stop_words = stopwords.words('english')
+
+
+def text_preprocess_jcr(rawtext):
+    text = ', '.join(rawtext)  # Join list elements with a comma and space
+    text = re.sub('([^\x00-\x7F])+', '', text)  # Remove all non ASCII characters
+    text = text.lower()  # lower casing all words
+    text = text.strip()  # Remove White Spaces
+    text = ' '.join([word for word in text.split() if word not in stop_words])  # remove stop words
+    text = ' '.join([lemmatizer.lemmatize(word) for word in text.split()])  # lemmatization
+    return text
+# Utility functions for recommendation module
+
+
+
+
+
+
+
+
+
+# 2) Encoding User Input Features:
+# Takes list of categorical data (course difficulty, course duration and course free option) as input
+# Returns one-hot encoded features.
+def categorical_encode(categorical_input):
+    encode = np.zeros((1, 6))
+    # Binary Encode Course Duration (0 - No Preference, 1 - Short, 2 - Medium, 3 - Long)
+    if categorical_input[0] > 0:
+        encode[0, categorical_input[0] - 1] = 1
+    # Binary Encode Course Difficulty (0 - No Preference, 1 - Introductory, 2 - Intermediate, 3 - Advanced)
+    if categorical_input[1] > 0:
+        encode[0, categorical_input[1] + 2] = 1
+        
+    return encode
+
+
+# 3) TfIdf Vectorizer:
+# Takes list of tokens as input and apply TfIdf Vectorization based on the pretrained dictionary.
+def tfidf_vectorize(text, vectorizer):
+    # Load Tfidf Vectorizer
+    # vectorizer_file = open(config.tfidf_vectorizer_filepath, 'rb')
+    # vectorizer = pickle.load(vectorizer_file)
+    # vectorizer_file.close()
+    tfidf = vectorizer.transform([text])
+    return tfidf
+
+
+# 4) Cosine Similarity:
+# Takes 2 vectors and calculate cosine similarity
+def cond_sim(input_vec, data_vec):
+    input_durr = input_vec[:, :3]
+    input_diff = input_vec[:, 3:]
+    data_durr = data_vec[:, :3]
+    data_diff = data_vec[:, 3:6]
+    # print(str(input_durr)+ " diff "+str(input_diff)+" data dur"+str(data_durr)+" "+str(data_diff))
+    # print('inp vect '+ str(input_vec)+ 'len '+str((input_vec.shape)))
+    # print('data vect '+ str(data_vec)+ 'len '+str((data_vec.shape)))
+    if (input_diff.sum() + input_durr.sum()) == 0:
+        sim = np.ones(data_vec.shape[0])
+    elif input_durr.sum() == 0:
+        sim = cosine_similarity(input_diff, data_diff)
+    elif input_diff.sum() == 0:
+        sim = cosine_similarity(input_durr, data_durr)
+    else:
+        data_vec=data_vec[:,:6]
+        sim = cosine_similarity(input_vec, data_vec)
+  
+    return sim
+
+
+# 5) Ranking based on popularity index
+# Given a sorted and threshold filtered ID of recommendations
+# Batch rank for every batch_size of ID by rating.
+def ranking(mask, text_sim, categorical_sim, rating):
+    target_idx = np.arange(text_sim.shape[0])[mask]
+    target_text_sim = text_sim[mask]
+    target_categorical_sim = categorical_sim[mask]
+    target_rating = rating[mask]
+    target_scores = sorted(np.unique(target_categorical_sim), reverse=True)
+    rec_idx = np.array([], dtype=int)
+    rec_sim = np.array([])
+    for score in target_scores:
+        group_mask = (target_categorical_sim == score)
+        group_idx = target_idx[group_mask]
+        group_text_sim = target_text_sim[group_mask]
+        group_rating = target_rating[group_mask]
+        group_sort_idx = np.argsort(group_rating)[::-1]
+        rec_idx = np.append(rec_idx, group_idx[group_sort_idx])
+        rec_sim = np.append(rec_sim, group_text_sim[group_sort_idx])
+    return rec_sim, rec_idx
+
+
+# 6) Load-up Pickle Object Data Files
+def load_pickle(filename):
+    data_file = open(filename, 'rb')
+    data = pickle.load(data_file)
+    data_file.close()
+    return data
+# Recommend Function
+def recommend_job_role_based(user_input, rating_data, tfidf_vectorizer, tfidf_data, categorical_data):
+    # 1. Feature Extraction - Text Based (TfIdf)
+    # Load Tfidf Data Sparse Matrix
+    # tfidf_data_file = open(config.tfidf_data_filepath, 'rb')
+    # tfidf_data = pickle.load(tfidf_data_file)
+    # tfidf_data_file.close()
+    # Text Input and Similarity Score
+        # get skill set for job role
+    skill_set = job_roles_df.loc[job_roles_df["job_role"] == user_input[0], "skill_set"].values[0].split(",")
+   
+    print(skill_set)
+    # create TF-IDF vector for skill set
+    skill_set_tfidf = tfidf_vectorizer.transform([" ".join(skill_set)])
+    
+    text_input = skill_set
+    #print('text input:  ',text_input)
+    text_processed = text_preprocess_jcr(text_input)
+    tfidf_vect = tfidf_vectorize(text_processed, tfidf_vectorizer)
+    tfidf_sim = cosine_similarity(tfidf_vect, tfidf_data).ravel()
+    
+  
+   
+    # 2. Feature Extraction - Categorical Based (One-Hot Encoded)
+    # Load Categorical One-Hot Encoded Sparse Matrix
+
+    # categorical_data_file = open(config.categorical_data_filepath, 'rb')
+    # categorical_data = pickle.load(categorical_data_file)
+    # categorical_data_file.close()
+    # Categroical Input and Similarity Score
+    categorical_input = user_input[1:3]
+    #print('cipt: ',categorical_input)
+    
+    categorical_vect =categorical_encode(categorical_input)
+
+    categorical_sim = cond_sim(categorical_vect, categorical_data[:, :-1]).ravel()
+
+    # 3. Recommendation Masks (Free vs Paid Courses Masks)
+    free_option_ind = user_input[-1]
+    free_option_data = categorical_data[:, -1]
+    thres_mask = (tfidf_sim > text_thres)
+    if free_option_ind == 1:
+        free_mask = ((free_option_data == 1) * thres_mask) == 1
+    else:
+        free_mask = (np.ones(tfidf_data.shape[0]) * thres_mask) == 1
+    paid_mask = ((np.ones(tfidf_data.shape[0]) * thres_mask) - free_mask) == 1
+
+    # 4. Apply Masks and Rank by categorical_sim group and rating
+    rec_sim, rec_idx = ranking(free_mask, tfidf_sim, categorical_sim, rating_data)
+
+    # 5. Append paid courses if number of free courses below a threshold
+    if (free_mask.sum() < free_show_thres) and (paid_mask.sum() > 0):
+        paid_sim, paid_idx = ranking(paid_mask, tfidf_sim, categorical_sim, rating_data)
+        rec_sim = np.append(rec_sim, paid_sim)
+        rec_idx = np.append(rec_idx, paid_idx)
+     
+    # 6. Convert Index to courseID
+    rec_idx = rec_idx + 1
+    course_sim = rec_sim[:recommend_topn].tolist()
+    course_idx = rec_idx[:recommend_topn].tolist()
+
+    return course_idx
+
+
+def recommend_default(rating_data):
+    sort_idx = (np.argsort(rating_data)[::-1])
+    sort_course = sort_idx[:recommend_default_topn]
+    default_course = [int(x+1) for x in sort_course]
+    return default_course
+
+
+# CONFIGURATION FOR RECOMMENDER MODULE
+# DATA FILE PATH
+tfidf_data_filepath = ('C:/Users/DELL/Desktop/Course_Recommendation/BEProject/SystemCode/Recommendation/Feature Map/tfidf_data.pickle')
+categorical_data_filepath = 'C:/Users/DELL/Desktop/Course_Recommendation/BEProject/SystemCode/Recommendation/Feature Map/categorical_data.pickle'
+tfidf_vectorizer_filepath = 'C:/Users/DELL/Desktop/Course_Recommendation/BEProject/SystemCode/Recommendation/Feature Map/tfidf_vectorizer.pickle'
+# TEXT BASED RECOMMENDATION THRESHOLD
+text_thres = 0.2
+# MINIMUM FREE COURSE COUNT THRESHOLD
+free_show_thres = 20
+# RECOMMENDATION RESULTS SIZE
+recommend_topn = 100
+# DEFAULT POPULAR RESULTS SIZE
+recommend_default_topn = 50
+#multiplier=5
+ainput = ['Network Architect', 0, 0, 0]  # what to learn, difficulty,duration.free
+
+rawdata_rating = rawdata['popularity_index']
+a=load_pickle(tfidf_data_filepath)
+b=load_pickle(categorical_data_filepath)
+c=load_pickle(tfidf_vectorizer_filepath)
+idx=recommend(ainput,rawdata_rating,c,a,b)      
+idx=recommend_job_role_based(ainput,rawdata_rating,c,a,b)
+print(len(idx))
+for i in idx:
+    print(rawdata['title'][i])
+
+
+
+jb=pd.read_csv('job_skills.csv')
+
+
+ainput = ['DevOps Engineer', 0, 0, 0]
+      
+idx=recommend_job_role_based(ainput,rawdata_rating,c,a,b)
+print(len(idx))
+    
+for i in idx:
+            print(rawdata['title'][i])
+if len(idx)<50:
+    v=jb[jb.job_role=='DevOps Engineer']
+    j=v.skill_set.str.split(',')
+    for i in j:
+        for k in i:
+            ainput = [k, 0, 0, 0]
+            idx=recommend(ainput,rawdata_rating,c,a,b)
+            print(k)
+            for ink in idx[:5]:
+                print(rawdata['title'][ink])
+
+
+jbdbd=pd.read_csv('job_skills.csv')
+dummies=jbdbd.skill_set.str.get_dummies(",")
+# display
+print(dummies.head(1))
+
+dummies.insert(loc=0, column='job_role', value=jbdbd.job_role)
+
+dummies.head()
+
+
+dummies.to_csv('jobencode.csv', index=False,encoding='utf_8_sig')
+
+
+jbdbd.head()
+
+import pandas as pd
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
+# user skill set
+user_skills = "Python,CSS,HTML,sql"
+
+# job required skills
+job_skills = jbdbd.skill_set
+
+# text preprocessing
+user_skills = user_skills.lower().replace(",", " ")
+job_skills = [skills.lower().replace(",", " ") for skills in job_skills]
+
+# TF-IDF vectorization
+tfidf = TfidfVectorizer()
+job_skills_tfidf = tfidf.fit_transform(job_skills)
+user_skills_tfidf = tfidf.transform([user_skills])
+
+# cosine similarity
+similarity_matrix = cosine_similarity(user_skills_tfidf, job_skills_tfidf)
+
+# create a dataframe with job roles and their similarity scores
+jobs_df = pd.DataFrame({'Job Role': jbdbd.job_role,
+                        'Similarity': similarity_matrix[0]})
+
+# sort by similarity score in descending order
+jobs_df = jobs_df.sort_values(by='Similarity', ascending=False)
+
+# print the dataframe
+print(jobs_df)
+
+
+
+import pandas as pd
+from sklearn.metrics.pairwise import cosine_similarity
+
+# Load the CSV file
+df = pd.read_csv('jobencode.csv', index_col='job_role')
+
+# Compute the cosine similarity matrix
+cos_sim = cosine_similarity(df)
+
+# Get the indices of the most similar job roles
+job_indices = pd.Series(df.index)
+
+def get_similar_jobs(job_title, n=3):
+    # Find the index of the job title
+    idx = job_indices[job_indices == job_title].index[0]
+
+    # Get the cosine similarities for the job
+    sim_scores = list(enumerate(cos_sim[idx]))
+
+    # Sort the jobs by similarity score
+    sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
+
+    # Get the indices of the most similar jobs
+    sim_indices = [i[0] for i in sim_scores[1:n+1]]
+
+    # Return the most similar job titles
+    return list(job_indices.iloc[sim_indices])
+
+# Example usage:
+similar_jobs = get_similar_jobs('Data Analyst', n=3)
+print(similar_jobs)
+
