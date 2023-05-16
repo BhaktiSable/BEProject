@@ -12,7 +12,7 @@ import sqlite3
 from sklearn.metrics.pairwise import cosine_similarity
 
 # Check & Query
-filename = r'C:\Users\nehab\Desktop\Be project\BEProject\SystemCode\instance\mydb.db'
+filename = 'C:/Users/DELL/Desktop/Course_Recommendation/BEProject/SystemCode/instance/mydb.db'
 table_name = 'course'
 sqlite_conn = sqlite3.connect(filename)
 
@@ -125,9 +125,9 @@ def load_pickle(filename):
 
 # CONFIGURATION FOR RECOMMENDER MODULE
 # DATA FILE PATH
-tfidf_data_filepath = (r'C:\Users\nehab\Desktop\Be project\BEProject\SystemCode\recommendation\FeatureMap\tfidf_data.pickle')
-categorical_data_filepath = r'C:\Users\nehab\Desktop\Be project\BEProject\SystemCode\recommendation\FeatureMap\categorical_data.pickle'
-tfidf_vectorizer_filepath = r'C:\Users\nehab\Desktop\Be project\BEProject\SystemCode\recommendation\FeatureMap\tfidf_vectorizer.pickle'
+tfidf_data_filepath = ('C:/Users/DELL/Desktop/Course_Recommendation/BEProject/SystemCode/Recommendation/FeatureMap/tfidf_data.pickle')
+categorical_data_filepath = 'C:/Users/DELL/Desktop/Course_Recommendation/BEProject/SystemCode/Recommendation/FeatureMap/categorical_data.pickle'
+tfidf_vectorizer_filepath = 'C:/Users/DELL/Desktop/Course_Recommendation/BEProject/SystemCode/Recommendation/FeatureMap/tfidf_vectorizer.pickle'
 # TEXT BASED RECOMMENDATION THRESHOLD
 text_thres = 0.5
 # MINIMUM FREE COURSE COUNT THRESHOLD
