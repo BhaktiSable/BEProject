@@ -133,9 +133,9 @@ text_thres = 0.5
 # MINIMUM FREE COURSE COUNT THRESHOLD
 free_show_thres = 2
 # RECOMMENDATION RESULTS SIZE
-recommend_topn = 3
+recommend_topn = 50
 # DEFAULT POPULAR RESULTS SIZE
-recommend_default_topn = 3
+recommend_default_topn = 10
 #multiplier=5
 
 
