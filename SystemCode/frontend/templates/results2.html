@@ -1,3 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" type="text/css"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/card.css">
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+
+</head>
+
+<body>
 {% extends 'base.html' %}
 {% import "bootstrap/wtf.html" as wtf %}
 {% block navbar %}
@@ -5,48 +21,73 @@
     {% include 'navbar.html' %}
 </div>
 {% endblock %}
-
 {% block app_content %}
-    {% if query %} <!-- to display the results of a new search -->
-        <h2>Here are the recommendations based on your preferences</h2>
-    {% else %} <!-- to display the results (course and details) of a past search in a searchId -->
-        <h2>Here are the recommendations based on your previous search</h2>
-    {% endif %}
-        <br>
-        {% for course in rec_list %}
-            <div class="card text-left">
-                <div class="panel panel-default" style="background-color:white">
-                    <div class="row justify-content-center">
-                        <div class="col-md-4">
-                            <img class="panel-img rounded" src={{course.image_url}} alt="Card image cap">
-                        </div>
-                        <div class="col-md-8">
-                        <div class="panel-heading">
-                            <h3 class="panel-title"><b>{{ course.title }}</b></h3>
-                            <h6><b><i>{{ course.platform }} | offered by {{course.provider}}</i></b></h6>
-                        </div>
-                        <div class="panel-body">
-                            <div class="col-md-9">
-                                <h6>Language: {{ course.language }} | Subtitles: {{course.subtitle}}</h6>
-                                <h6>Difficulty: {{ course.difficulty }}</h6>
-                                <h6>Duration: {{ course.duration }}</h6>
-                                <h6>{{ course.free_option }}</h6>
-                            </div>
-                            <div class="col-md-3">
-                                <a href="{{ course.url }}" class="btn btn-primary pull-right" target="_blank" rel="noopener noreferrer">More info</a>
-                                    <button class="btn btn-default swap pull-right favouriteButton" type="button"  id="{{course.courseID}}">
-                                    {% if course.courseID in favlist %}
-                                        <span class="glyphicon glyphicon-heart"></span>
-                                    {% else %}
-                                        <span class="glyphicon glyphicon-heart-empty"></span>
-                                    {% endif %}
-                                    </button>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
+<section class="main course">
 
-{% endblock %}
+    <div class="-result-container py-2">
+        <div class="div py-2">
+            <h1>Recommended courses </h1>
+        </div>
+
+        {% for course in rec_list %}
+
+        <div class="postcard">
+            <a class="postcard__img_link" href="#">
+                <img class="postcard__img" src={{course.image_url}} alt="Image Title" />
+            </a>
+            <div class="postcard__text">
+                <h1 class="postcard__title "><a href="#">{{ course.title }}</a></h1>
+
+
+                <div class="postcard__preview-txt">{{ course.description_short }}
+                </div>
+                <div>
+                    <ul class="postcard__tagbox">
+                        <li class="tag__item ">
+                            <a href="#" class="btn btn-primary">
+                                <span class="span"><i class="bi bi-folder-plus"
+                                        style="padding-right:  10px; font-size: 18px; font-weight: 400;"></i>Add to
+                                    list</span>
+                                <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                            </a>
+
+                        </li>
+
+                        <li class="tag__item ">
+                            <a href="/coursedisplay/{{ course['courseID'] }}" class="btn btn-primary">
+                                <span class="span">View More<i class="bi bi-arrow-right-circle"
+                                        style="padding-left: 10px; font-size: 18px;font-weight: 400;"></i></span>
+                                <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <div class="extraInfo">
+                <ul>
+                    <li class="nowrap padding-vert-xsmall padding-horz-xxsmall  row horz-align-left"><i
+                            class="bi bi-layers-fill" style="padding-right:10px;"></i>{{ course.platform }}</li>
+                    <li
+                        class="nowrap padding-vert-xsmall padding-horz-xxsmall border-top border-gray-light row horz-align-left">
+                        <span><i class="bi bi-clock-fill" style="padding-right:10px;"></i>{{ course.duration }}</span>
+                    </li>
+                    <li
+                        class="nowrap padding-vert-xsmall padding-horz-xxsmall border-top border-gray-light row horz-align-left">
+                        <i class="bi bi-bar-chart" style="padding-right:10px;"></i>{{ course.difficulty }}</li>
+                    <li
+                        class="nowrap padding-vert-xsmall padding-horz-xxsmall border-top border-gray-light row horz-align-left">
+                        <i class="bi bi-globe" style="padding-right:10px;"></i>English</li>
+                    <li
+                        class="nowrap padding-vert-xsmall padding-horz-xxsmall border-top border-gray-light row horz-align-left">
+                        <i class="bi bi-coin" style="padding-right:10px;"></i>{{ course.free_option }}</li>
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+</section>
+{% endblock app_content %}
+</body>
+</html>

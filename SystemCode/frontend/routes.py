@@ -28,6 +28,7 @@ categorical_data = load_pickle(categorical_data_filepath)
 @app.route('/')
 def index():
     return render_template('index.html')
+
 @app.route('/home')
 @login_required
 def home():
@@ -36,7 +37,7 @@ def home():
         return redirect(url_for('/'))
     return render_template('home.html',title=title,home=True)
 @app.route('/login', methods=['GET', 'POST'])
-def login_new():
+def login():
     title = 'Login'
     if current_user.is_authenticated:
         return redirect(url_for('home'))
@@ -56,9 +57,9 @@ def login_new():
             return redirect(url_for('home'))
         else:
             flash('User not exists or password not match', category='danger')
-    return render_template('login_new.html',title=title,form=form,login=True)
+    return render_template('login.html',title=title,form=form,login=True)
 @app.route('/signup', methods=['GET', 'POST'])
-def signup_new():
+def signup():
     if current_user.is_authenticated:
         return redirect(url_for('home'))
     title = 'Sign up'
@@ -71,8 +72,8 @@ def signup_new():
         db.session.add(user)
         db.session.commit()
         flash('Successfully registered!', category='success')
-        return redirect(url_for('login_new'))
-    return render_template('signup_new.html', title=title,form=form,signup=True)
+        return redirect(url_for('login'))
+    return render_template('signup.html', title=title,form=form,signup=True)
 
 @app.route('/query', methods=['GET', 'POST'])
 @login_required
@@ -162,9 +163,10 @@ def results():
         rec_list.append(Course.query.filter_by(courseID=item).first())
 
     # Render Query Results
-    difficulty = {1: "Beginner", 2: "Intermediate", 3: "Advanced"}
-    duration = {1: "Short", 2: "Medium", 3: "Long"}
+    difficulty = {0: "Beginner", 1: "Intermediate", 2: "Advanced"}
+    duration = {0: "Short", 1: "Medium", 2: "Long"}
     free_option = {0: "Paid", 1: "Free"}
+    platform = {0:'AWS',1:'dataCamp',2:'Edureka',3:'Edx',4:'freecodeCamp',5:'FutureLearn',6:'Independent',7:'Linkedin',8:'Microsoft',9:'Pluralsight',10:'Udacity',11:'Udemy',12:'Coursera'}
     fav_query = Favourite().query.filter_by(userID=current_id)
     favlist = []
     for item in fav_query:
@@ -173,6 +175,7 @@ def results():
         course.difficulty = difficulty.get(course.difficulty, "Unknown")
         course.duration = duration.get(course.duration, "Unknown")
         course.free_option = free_option.get(course.free_option, "Unknown")
+        course.platform=platform.get(course.platform,"Unkown")
     return render_template('results.html', title=title, rec_list=rec_list, favlist=favlist, query=True)
 
 @app.route('/query2', methods=['GET', 'POST'])
@@ -189,10 +192,6 @@ def query2():
 
     # Validate form submission and update database based on query session
     if form.validate_on_submit():
-        '''if isinstance(form.topic.data, str):  # Check if dropdown options are strings
-            query_text = form.topic.data
-        else:  # Use the label attribute for other types of dropdown options
-            query_text = form.topic.data.label'''
         query_text = form.topic.data
         query_duration = form.duration.data
         query_difficulty = form.difficulty.data
@@ -266,9 +265,10 @@ def results2():
         rec_list.append(Course.query.filter_by(courseID=item).first())
 
     # Render Query Results
-    difficulty = {1: "Beginner", 2: "Intermediate", 3: "Advanced"}
-    duration = {1: "Short", 2: "Medium", 3: "Long"}
+    difficulty = {0: "Beginner", 1: "Intermediate", 2: "Advanced"}
+    duration = {0: "Short", 1: "Medium", 2: "Long"}
     free_option = {0: "Paid", 1: "Free"}
+    platform = {0:'AWS',1:'dataCamp',2:'Edureka',3:'Edx',4:'freecodeCamp',5:'FutureLearn',6:'Independent',7:'Linkedin',8:'Microsoft',9:'Pluralsight',10:'Udacity',11:'Udemy',12:'Coursera'}
     fav_query = Favourite().query.filter_by(userID=current_id)
     favlist = []
     for item in fav_query:
@@ -277,19 +277,22 @@ def results2():
         course.difficulty = difficulty.get(course.difficulty, "Unknown")
         course.duration = duration.get(course.duration, "Unknown")
         course.free_option = free_option.get(course.free_option, "Unknown")
+        course.platform=platform.get(course.platform,"Unkown")
     return render_template('results2.html', title=title, rec_list=rec_list, favlist=favlist, query=True)
 
+# @app.route('/viewprofile')
+# @login_required
+# def viewprofile():
+#     return render_template('viewprofile.html')
 
-
-
-'''@app.route('/query2', methods=['GET', 'POST'])
+@app.route('/coursedisplay/<CourseID>')
 @login_required
-def query2():
-    form = CareerInterstForm()
-    return render_template('query2.html',form=form,query2=True)'''
+def coursedisplay(CourseID):
+    print("innnnnnnnnnnnnn")
+    course=(Course.query.filter_by(courseID=CourseID).first())
 
-
+    return render_template('coursedisplay.html',course=course)
 @app.route('/logout')
 def logout():
     session.clear()
-    return redirect(url_for('login_new'))
+    return redirect(url_for('login'))

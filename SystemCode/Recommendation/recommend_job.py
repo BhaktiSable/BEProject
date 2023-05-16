@@ -401,7 +401,7 @@ text_thres = 0.2
 # MINIMUM FREE COURSE COUNT THRESHOLD
 free_show_thres = 20
 # RECOMMENDATION RESULTS SIZE
-recommend_topn = 100
+recommend_topn = 50
 # DEFAULT POPULAR RESULTS SIZE
 recommend_default_topn = 50
 # multiplier=5
@@ -548,7 +548,13 @@ def recommend_job_role_based(user_input, rating_data, tfidf_vectorizer, tfidf_da
     rec_idx = rec_idx + 1
     course_sim = rec_sim[:recommend_topn].tolist()
     course_idx = rec_idx[:recommend_topn].tolist()
+    if len(course_idx)<recommend_topn:
+        for s in skill_set:
+            inp=[s,user_input[1],user_input[2],user_input[3]]
+            c_idx = recommend(inp,rating_data, tfidf_vectorizer, tfidf_data, categorical_data)
+            for ijj in c_idx[:5]:
 
+                course_idx.append(ijj)
     return course_idx
 #testing
 '''ainput = ['DevOps Engineer', 0, 0, 0]
