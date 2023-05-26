@@ -72,20 +72,20 @@
 }
 
 /* This pen */
-body {
+/* body {
     font-family: 'Urbanist', sans-serif;
     font-size: 16px;
     color: #ffffff;
     text-rendering: optimizeLegibility;
     font-weight: initial;
 }
-
+ */
 
 
 .result-btn {
     min-height: 40px;
     max-width: max-content;
-    font-size: 0.8rem;
+    font-size: 1.5rem;
     font-weight: 800;
     display: flex;
     align-items: center;
@@ -93,6 +93,7 @@ body {
     padding: 5px 20px;
     border-radius: var(--radius-6);
     transition: var(--transition-1);
+    margin-top: 5%;
 }
 
 .btn-primary {
@@ -120,13 +121,13 @@ a:hover {
 .postcard {
     flex-wrap: wrap;
     display: flex;
-
     box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
     border-radius: 10px;
     margin: 0 0 2rem 0;
     overflow: hidden;
     position: relative;
     color: #050505;
+    margin: 2%;
 }
 
 .light {
@@ -148,6 +149,7 @@ h1,
 
 h1 {
     color: #140707;
+    margin-left: 2% ;
 }
 
 .head {
@@ -218,7 +220,7 @@ h1 {
     width: 25%;
 }
 
-
+/* 
 li {
     list-style-type: none;
     padding: inherit;
@@ -229,8 +231,13 @@ li {
     margin-left: 2px;
     border-radius: 3px;
 
+} */
+.ext
+{
+    list-style-type: none;
+    padding: inherit;
+    margin-right: 1rem !important;
 }
-
 ul {
     padding: 0.5rem;
 }
@@ -284,7 +291,7 @@ ul {
 
         top: -20%;
         height: 130%;
-        width: 55px;
+        /* width: 55px; */
     }
 
 
@@ -293,19 +300,9 @@ ul {
 
 
 }
-
-
-
 body {
     background: #eee
 }
-
-.ratings i {
-    font-size: 16px;
-    color: red
-}
-
-
 
 .product-image {
     width: 100%
@@ -324,7 +321,7 @@ body {
 
 .spec-1 {
     color: #938787;
-    font-size: 15px
+    /* font-size: 15px */
 }
 
 h5 {
@@ -333,4 +330,7 @@ h5 {
 
 .para {
     font-size: 16px
+}
+.main{
+    margin-top: 10%;
 }

@@ -6,21 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EduNexus</title>
-
-    <!--
-    - favicon
-  -->
+    <!--- favicon-->
     <link rel="shortcut icon" href="../static/image/favicon.svg" type="image/svg+xml">
 
-    <!--
-    - custom css link
-  -->
+    <!--- custom css link-->
     <link rel="stylesheet" href="../static/navbar.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
-    <!--
-    - google font link
-  -->
+    <!--- google font link-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap"
@@ -33,11 +26,11 @@
     <header class="header" data-header>
         <div class="container">
             <h1>
-                <a href="#" class="logo">EduNexus</a>
+                <a href="{{url_for('index')}}" class="logo">EduNexus</a>
             </h1>
             <nav class="navbar" data-navbar>
                 <div class="navbar-top">
-                    <a href="#" class="logo">EduNexus</a>
+                    <a href="{{url_for('index')}}" class="logo">EduNexus</a>
 
                     <button class="nav-close-btn" aria-label="Close menu" data-nav-toggler>
                         <ion-icon name="close-outline"></ion-icon>
@@ -53,9 +46,6 @@
                     <li class="navbar-item">
                         <a href="#" class="navbar-link" data-nav-toggler>Courses</a>
                     </li>
-                    <li class="navbar-item">
-                        <a href="#" class="navbar-link" data-nav-toggler>Event</a>
-                    </li>
                 </ul>
             </nav>
             <div class="header-actions">
@@ -70,15 +60,15 @@
             <div class="overlay" data-nav-toggler data-overlay></div>
         </div>
     </header>
-    {% elif signup_new or login_new %}
+    {% elif signup or login %}
     <header class="header" data-header>
         <div class="container">
             <h1>
-                <a href="#" class="logo">EduNexus</a>
+                <a href="{{url_for('index')}}" class="logo">EduNexus</a>
             </h1>
             <nav class="navbar" data-navbar>
                 <div class="navbar-top">
-                    <a href="#" class="logo">EduNexus</a>
+                    <a href="{{url_for('index')}}" class="logo">EduNexus</a>
 
                     <button class="nav-close-btn" aria-label="Close menu" data-nav-toggler>
                         <ion-icon name="close-outline"></ion-icon>
@@ -94,9 +84,6 @@
                     <li class="navbar-item">
                         <a href="#" class="navbar-link" data-nav-toggler>Courses</a>
                     </li>
-                    <li class="navbar-item">
-                        <a href="#" class="navbar-link" data-nav-toggler>Event</a>
-                    </li>
                 </ul>
             </nav>
             <div class="header-actions">
@@ -111,17 +98,16 @@
             <div class="overlay" data-nav-toggler data-overlay></div>
         </div>
     </header>
-    <a class="btn btn-md" href="{{url_for('login')}}" role="button">Login/Sign Up</a>
 
     {% elif home%}
     <header class="header" data-header>
         <div class="container">
             <h1>
-                <a href="#" class="logo">EduNexus</a>
+                <a href="{{url_for('index')}}" class="logo">EduNexus</a>
             </h1>
             <nav class="navbar" data-navbar>
                 <div class="navbar-top">
-                    <a href="#" class="logo">EduNexus</a>
+                    <a href="{{url_for('index')}}" class="logo">EduNexus</a>
 
                     <button class="nav-close-btn" aria-label="Close menu" data-nav-toggler>
                         <ion-icon name="close-outline"></ion-icon>
@@ -138,16 +124,10 @@
                         <a href="{{url_for('query2')}}" class="navbar-link" data-nav-toggler>Career/Job Interest</a>
                     </li>
                     <li class="navbar-item">
-                        <a href="#" class="navbar-link" data-nav-toggler>My Course</a>
+                        <a href="{{url_for('mycourse')}}" class="navbar-link" data-nav-toggler>My Course</a>
                     </li>
                     <li class="navbar-item">
-                        <a href="#" class="navbar-link" data-nav-toggler>History</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="#" class="navbar-link" data-nav-toggler>Feedback</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="{{url_for('logout')}}" class="navbar-link" data-nav-toggler>Logout</a>
+                        <a href="{{url_for('history')}}" class="navbar-link" data-nav-toggler>History</a>
                     </li>
                 </ul>
             </nav>
@@ -155,7 +135,8 @@
                 <div class="dropdown">
                     <button class="dropbtn">
                         <div class="icons" style="align-content:center">
-                            <div id="user-btn" class="fa fa-user"> {% if current_user.username %} {{current_user.name}}{% endif
+                            <div id="user-btn" class="fa fa-user"> {% if current_user.username %}
+                                {{current_user.name}}{% endif
                                 %}</div>
                         </div>
                     </button>
@@ -163,17 +144,21 @@
                         <a href="#">View profile</a>
                         <a href="{{url_for('logout')}}"><i class="fa fa-logout"></i>Logout</a>
                     </div>
-        </div>
+                </div>
+                <button class="header-action-btn nav-open-btn" aria-label="Open menu" data-nav-toggler>
+                    <ion-icon name="menu-outline"></ion-icon>
+                </button>
+            </div>
     </header>
     {% elif query%}
     <header class="header" data-header>
         <div class="container">
             <h1>
-                <a href="#" class="logo">EduNexus</a>
+                <a href="{{url_for('index')}}" class="logo">EduNexus</a>
             </h1>
             <nav class="navbar" data-navbar>
                 <div class="navbar-top">
-                    <a href="#" class="logo">EduNexus</a>
+                    <a href="{{url_for('index')}}" class="logo">EduNexus</a>
 
                     <button class="nav-close-btn" aria-label="Close menu" data-nav-toggler>
                         <ion-icon name="close-outline"></ion-icon>
@@ -190,16 +175,10 @@
                         <a href="{{url_for('query2')}}" class="navbar-link" data-nav-toggler>Career/Job Interest</a>
                     </li>
                     <li class="navbar-item">
-                        <a href="#" class="navbar-link" data-nav-toggler>My Course</a>
+                        <a href="{{url_for('mycourse')}}" class="navbar-link" data-nav-toggler>My Course</a>
                     </li>
                     <li class="navbar-item">
-                        <a href="#" class="navbar-link" data-nav-toggler>History</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="#" class="navbar-link" data-nav-toggler>Feedback</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="{{url_for('logout')}}" class="navbar-link" data-nav-toggler>Logout</a>
+                        <a href="{{url_for('history')}}" class="navbar-link" data-nav-toggler>History</a>
                     </li>
                 </ul>
             </nav>
@@ -207,26 +186,32 @@
                 <div class="dropdown">
                     <button class="dropbtn">
                         <div class="icons" style="align-content:center">
-                            <div id="user-btn" class="fa fa-user"> {% if current_user.username %} {{current_user.name}}{% endif
-                                %}</div>
+                            <div id="user-btn" class="fa fa-user"> {% if current_user.username %}
+                                {{current_user.name}}{% endif %}</div>
                         </div>
                     </button>
                     <div class="dropdown-content">
                         <a href="#">View profile</a>
                         <a href="{{url_for('logout')}}"><i class="fa fa-logout"></i>Logout</a>
                     </div>
+                </div>
+                <button class="header-action-btn nav-open-btn" aria-label="Open menu" data-nav-toggler>
+                    <ion-icon name="menu-outline"></ion-icon>
+                </button>
+            </div>
         </div>
+
     </header>
 
     {% elif query2%}
     <header class="header" data-header>
         <div class="container">
             <h1>
-                <a href="#" class="logo">EduNexus</a>
+                <a href="{{url_for('index')}}" class="logo">EduNexus</a>
             </h1>
             <nav class="navbar" data-navbar>
                 <div class="navbar-top">
-                    <a href="#" class="logo">EduNexus</a>
+                    <a href="{{url_for('index')}}" class="logo">EduNexus</a>
 
                     <button class="nav-close-btn" aria-label="Close menu" data-nav-toggler>
                         <ion-icon name="close-outline"></ion-icon>
@@ -243,31 +228,83 @@
                         <a href="{{url_for('query2')}}" class="navbar-link" data-nav-toggler>Career/Job Interest</a>
                     </li>
                     <li class="navbar-item">
-                        <a href="#" class="navbar-link" data-nav-toggler>My Course</a>
+                        <a href="{{url_for('mycourse')}}" class="navbar-link" data-nav-toggler>My Course</a>
                     </li>
                     <li class="navbar-item">
-                        <a href="#" class="navbar-link" data-nav-toggler>History</a>
+                        <a href="{{url_for('history')}}" class="navbar-link" data-nav-toggler>History</a>
                     </li>
-                    <li class="navbar-item">
-                        <a href="#" class="navbar-link" data-nav-toggler>Feedback</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="{{url_for('logout')}}" class="navbar-link" data-nav-toggler>Logout</a>
-                    </li>
+
                 </ul>
             </nav>
             <div class="header-actions">
                 <div class="dropdown">
                     <button class="dropbtn">
                         <div class="icons" style="align-content:center">
-                            <div id="user-btn" class="fa fa-user"> {% if current_user.username %} {{current_user.name}}{% endif
-                                %}</div>
+                            <div id="user-btn" class="fa fa-user"> {% if current_user.username %}
+                                {{current_user.name}}{% endif %}</div>
                         </div>
                     </button>
                     <div class="dropdown-content">
                         <a href="#">View profile</a>
                         <a href="{{url_for('logout')}}"><i class="fa fa-logout"></i>Logout</a>
                     </div>
+                </div>
+                <button class="header-action-btn nav-open-btn" aria-label="Open menu" data-nav-toggler>
+                    <ion-icon name="menu-outline"></ion-icon>
+                </button>
+            </div>
+        </div>
+    </header>
+    {% elif history%}
+    <header class="header" data-header>
+        <div class="container">
+            <h1>
+                <a href="{{url_for('index')}}" class="logo">EduNexus</a>
+            </h1>
+            <nav class="navbar" data-navbar>
+                <div class="navbar-top">
+                    <a href="{{url_for('index')}}" class="logo">EduNexus</a>
+
+                    <button class="nav-close-btn" aria-label="Close menu" data-nav-toggler>
+                        <ion-icon name="close-outline"></ion-icon>
+                    </button>
+                </div>
+                <ul class="navbar-list">
+                    <li class="navbar-item">
+                        <a href="{{url_for('home')}}" class="navbar-link" data-nav-toggler>Home</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="{{url_for('query')}}" class="navbar-link" data-nav-toggler>Give Prefrences</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="{{url_for('query2')}}" class="navbar-link" data-nav-toggler>Career/Job Interest</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="{{url_for('mycourse')}}" class="navbar-link" data-nav-toggler>My Course</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a href="{{url_for('history')}}" class="navbar-link" data-nav-toggler>History</a>
+                    </li>
+
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="dropdown">
+                    <button class="dropbtn">
+                        <div class="icons" style="align-content:center">
+                            <div id="user-btn" class="fa fa-user"> {% if current_user.username %}
+                                {{current_user.name}}{% endif %}</div>
+                        </div>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="#">View profile</a>
+                        <a href="{{url_for('logout')}}"><i class="fa fa-logout"></i>Logout</a>
+                    </div>
+                </div>
+                <button class="header-action-btn nav-open-btn" aria-label="Open menu" data-nav-toggler>
+                    <ion-icon name="menu-outline"></ion-icon>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -275,11 +312,11 @@
     <header class="header" data-header>
         <div class="container">
             <h1>
-                <a href="#" class="logo">EduNexus</a>
+                <a href="{{url_for('index')}}" class="logo">EduNexus</a>
             </h1>
             <nav class="navbar" data-navbar>
                 <div class="navbar-top">
-                    <a href="#" class="logo">EduNexus</a>
+                    <a href="{{url_for('index')}}" class="logo">EduNexus</a>
 
                     <button class="nav-close-btn" aria-label="Close menu" data-nav-toggler>
                         <ion-icon name="close-outline"></ion-icon>
@@ -294,9 +331,6 @@
                     </li>
                     <li class="navbar-item">
                         <a href="#" class="navbar-link" data-nav-toggler>Courses</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="#" class="navbar-link" data-nav-toggler>Event</a>
                     </li>
                 </ul>
             </nav>
@@ -315,11 +349,11 @@
     {% endif %}
 
     <script src="../static/script.js" defer></script>
-
-  <!-- 
+    <!--
     - ionicon link
   -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
+
 </html>

@@ -1,11 +1,13 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, RadioField, SelectMultipleField, FieldList, \
-    validators, SelectField
+    validators, SelectField,EmailField
 from wtforms.validators import DataRequired, Length, ValidationError,EqualTo
 from frontend.models import User,Course
+import email_validator
 
 class SignupForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired(), Length(min=1, max=200)])
+    email=EmailField('Email',validators=[DataRequired(),validators.Email()])
     username = StringField('Username', validators=[DataRequired(), Length(min=6, max=20)])
     password = PasswordField('Password', validators=[DataRequired(), Length(min=6, max=20)])
     confirmpassword=PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])

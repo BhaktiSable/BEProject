@@ -1,15 +1,5 @@
 
 
-* {
-	padding: 0;
-	margin: 0;
-
-	font-family: 'Space Grotesk', sans-serif;
-	text-decoration: none;
-}
-
-
-
 :root {
 
   /**
@@ -192,7 +182,7 @@ body {
 }
 
 .btn {
-  min-height: 55px;
+  min-height: 60px;
   max-width: max-content;
   font-size: var(--fs-5);
   font-weight: var(--fw-700);
@@ -251,7 +241,7 @@ body {
   width: 100%;
   top: 0;
   left: 0;
-  padding-block: 18px;
+  padding-block: 20px;
   z-index: 4;
 }
 
@@ -275,7 +265,7 @@ body {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
 }
 
 .header-action-btn {
@@ -287,7 +277,11 @@ body {
 }
 
 .header-action-btn ion-icon { --ionicon-stroke-width: 40px; }
-
+a:hover
+{
+  color:white;
+  background-color: var(--space-cadet_20);;
+}
 .navbar {
   position: fixed;
   top: 0;
@@ -311,7 +305,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 18px;
+  padding: 15px 20px;
   border-block-end: 1px solid var(--cultured-2);
 }
 
@@ -430,7 +424,7 @@ body {
 }
 
 .hero .container {
-  display:flex;
+  display: flex;
   gap: 30px;
 }
 
@@ -563,130 +557,6 @@ body {
   background-size: cover;
   background-position: center;
 }
-
-.course :is(.section-subtitle, .section-title) { text-align: center; }
-
-.course .grid-list { margin-block: 60px; }
-
-.course-card {
-  position: relative;
-  background-color: var(--white);
-  border-radius: var(--radius-6);
-  overflow: hidden;
-}
-
-.course-card .card-banner {
-  background-color: var(--light-gray);
-  aspect-ratio: 370 / 270;
-  overflow: hidden;
-}
-
-.course-card .card-banner img { transition: var(--transition-2); }
-
-.course-card:is(:hover, :focus-within) .card-banner img { transform: scale(1.1); }
-
-.course-card .card-actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 15px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-
-.course-card .badge {
-  background-color: var(--white);
-  color: var(--ultramarine-blue);
-  font-size: var(--fs-6);
-  font-weight: var(--fw-600);
-  padding: 4px 12px;
-  border-radius: var(--radius-4);
-}
-
-.course-card .whishlist-btn {
-  background-color: var(--space-cadet_20);
-  color: var(--white);
-  font-size: 18px;
-  padding: 6px;
-  margin: 5px;
-  border-radius: 50%;
-  backdrop-filter: blur(10px);
-}
-
-.course-card .whishlist-btn.active { color: var(--tart-orange); }
-
-.course-card .whishlist-btn:active ion-icon { transform: scale(0.9); }
-
-.course-card .card-content { padding: 25px 20px; }
-
-.course-card .card-meta-list {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 15px;
-}
-
-.course-card .card-meta-item {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.course-card .card-meta-item ion-icon { --ionicon-stroke-width: 40px; }
-
-.course-card .card-meta-text { font-weight: var(--fw-500); }
-
-.course-card .card-title {
-  line-height: 1.6;
-  margin-block: 10px 15px;
-  transition: var(--transition-1);
-}
-
-.course-card .card-title:is(:hover, :focus) { color: var(--ultramarine-blue); }
-
-.course-card .rating {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  color: var(--orange-peel);
-  font-size: 18px;
-}
-
-.course-card .rating-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-block-end: 25px;
-}
-
-.course-card .card-footer {
-  padding-block-start: 25px;
-  border-block-start: 1px solid var(--cultured-2);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-}
-
-.course-card .card-price {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
-}
-
-.course-card .card-price .span {
-  color: var(--ultramarine-blue);
-  font-size: var(--fs-4);
-  font-weight: var(--fw-700);
-}
-
-.course .btn { margin-inline: auto; }
-
-
 
 
 
@@ -1071,15 +941,15 @@ body {
   .about-banner { margin-inline: 120px 130px; }
 
   .about .abs-img-2 {
-    display: flex;
+    display: block;
     position: absolute;
     top: 15%;
-    /* left: -120px; */
+    left: -120px;
     border-radius: var(--radius-4);
     z-index: -1;
   }
 
-  .about .abs-img-1 { right: 130px; }
+  .about .abs-img-1 { right: -130px; }
 
 
 
@@ -1189,7 +1059,7 @@ body {
   }
 
   .hero .abs-img {
-    display: flex;
+    display: block;
     position: absolute;
   }
 

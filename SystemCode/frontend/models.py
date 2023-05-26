@@ -10,6 +10,7 @@ def load_user(user_id):
 class User(db.Model, UserMixin):
     userID = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(200), nullable=False)
+    email=db.Column(db.String(200),unique=True,nullable=False)
     username = db.Column(db.String(20), unique=True, nullable=False)
     password = db.Column(db.String(20), nullable=False)
 
@@ -41,6 +42,10 @@ class Course(db.Model):
     keyword = db.Column(db.Text,nullable=False)
 
 class Favourite(db.Model):
+    userID = db.Column(db.Integer, primary_key=True)
+    courseID = db.Column(db.Integer, primary_key=True, nullable=False)
+
+class Completed(db.Model):
     userID = db.Column(db.Integer, primary_key=True)
     courseID = db.Column(db.Integer, primary_key=True, nullable=False)
 

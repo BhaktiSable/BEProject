@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="../static/card.css">
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+    <style>
+        <!-- .main
+        {
+            row-gap: 10px;
+        }
+        -->
+
+    </style>
+</head>
+
+<body style="line-height:3px">
+    {% extends 'base.html' %}
+    {% import "bootstrap/wtf.html" as wtf %}
+    {% block navbar %}
+    <div class="container-fluid">
+        {% include 'navbar.html' %}
+    </div>
+    {% endblock %}
+    {% block app_content %}
+    <div style="margin-top: 10%;">
+        <h1>Your Search history</h1>
+    </div>
+        <div class="result-container">
+            {% for i in range(nquery) %}
+            <div class="postcard">
+                <div class="postcard__text">
+                    <div class="postcard__preview-txt">
+                        <h3>Search Time</h3>
+                        <h4><i>{{ output_list[i][4] }}</i></h4>
+                    </div>
+                </div>
+                <div class="postcard__text">
+                    <div class="postcard__preview-txt">
+                        <h4>Topic: {{ output_list[i][0] }}</h4>
+                        <h4>Duration: {{ output_list[i][1] }}</h4>
+                        <h4>Difficulty: {{ output_list[i][2] }}</h4>
+                        <h4>Free/Paid: {{ output_list[i][3] }}</h4>
+                    </div>
+                </div>
+
+                <div class="extraInfo">
+                    <br>
+                    <a href="/history/{{ output_list[i][5] }}" class="btn btn-primary pull-right">Show Results</a>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+    {% endblock app_content %}
+</body>
+
+</html>
+
+
+
+<!-- <div class="card text-left">
+    <div class="panel panel-default" style="background-color:white" >
+        <div class="row text-center">
+            <div class="col-md-3">
+                <h3>Search Time</h3>
+                <h4><i>{{ output_list[i][4] }}</i></h4>
+            </div>
+            <div class="panel-body text-left">
+                <div class="col-md-3">
+                    <h4>Topic: {{ output_list[i][0] }}</h4>
+                    <h4>Duration: {{  output_list[i][1]  }}</h4>
+                </div>
+                <div class="col-md-5">
+                    <h4>Difficulty: {{ output_list[i][2] }}</h4>
+                    <h4>Free/Paid: {{  output_list[i][3]  }}</h4>
+                </div>
+                <div class="col-ml-24">
+                    <br>
+                    <a href="/history/{{ output_list[i][5] }}" class="btn btn-primary pull-right">Show Results</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
