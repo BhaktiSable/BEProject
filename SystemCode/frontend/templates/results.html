@@ -14,18 +14,39 @@
     <link rel="stylesheet" type="text/css"
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+
     <link rel="stylesheet" type="text/css" href="../static/card.css">
-    <link rel="stylesheet" type="text/css" href="../static/style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../static/style.css"> -->
+    <style>
+        .bi.bi-bookmark-fill {
+            box-shadow: none;
+        }
+
+        .bi.bi-bookmark-fill {
+            color: black;
+            box-shadow: none;
+        }
+
+        .panel-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
 </head>
-{% extends 'base.html' %}
-{% import "bootstrap/wtf.html" as wtf %}
-{% block navbar %}
-<div class="container-fluid">
-    {% include 'navbar.html' %}
-</div>
-{% endblock %}
 
 <body>
+    <!-- {% extends 'base.html' %} -->
+    {% block navbar %}
+    <div class="container-fluid">
+        {% include 'navbar.html' %}
+    </div>
+    {% endblock %}
+
+
     {% block app_content %}
     <section class="main course">
 
@@ -41,7 +62,7 @@
                     <img class="postcard__img" src={{course.image_url}} alt="Image Title" />
                 </a>
                 <div class="postcard__text">
-                    <h1 class="postcard__title "><a href="#">{{ course.title }}</a></h1>
+                    <h1 class="postcard__title " style="margin-left: 1%;">{{ course.title }}</h1>
 
 
                     <div class="postcard__preview-txt">{{ course.description_short }}
@@ -49,20 +70,22 @@
                     <div>
                         <ul class="postcard__tagbox">
                             <li class="tag__item ">
-                                <a href="#" class="result-btn btn-primary">
-                                    <span class="span"><i class="bi bi-folder-plus"
-                                            style="padding-right:  10px; font-size: 18px; font-weight: 400;"></i>Add to
-                                        list</span>
-                                    <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-                                </a>
-
+                                <button class="btn btn-default swap pull-right favouriteButton" type="button"
+                                    id="{{course.courseID}}">
+                                    {% if course.courseID in favlist %}
+                                    <span class="bi bi-bookmark-fill"
+                                        style="padding-right:  10px; font-size: 18px; font-weight: 400;"></span>
+                                    {% else %}
+                                    <span class="bi bi-bookmark"></span>
+                                    {% endif %}
+                                </button>
                             </li>
 
                             <li class="tag__item ">
-                                <a href="/coursedisplay/{{ course['courseID'] }}" class="result-btn btn-primary">
+                                <a href="/coursedisplay/{{ course['courseID'] }}" class="result-btn btn-primary"
+                                    target="_blank">
                                     <span class="span">View More<i class="bi bi-arrow-right-circle"
-                                            style="padding-left: 10px; font-size: 18px;font-weight: 400;"></i></span>
-                                    <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                                            style="padding-left: 10px;font-weight: 400;"></i></span>
                                 </a>
                             </li>
                         </ul>
@@ -73,23 +96,23 @@
 
                 <div class="extraInfo">
                     <ul>
-                        <li class="nowrap padding-vert-xsmall padding-horz-xxsmall  row horz-align-left"><i
+                        <li class="ext nowrap padding-vert-xsmall padding-horz-xxsmall  row horz-align-left"><i
                                 class="bi bi-layers-fill" style="padding-right:10px;"></i>{{ course.platform }}</li>
                         <li
-                            class="nowrap padding-vert-xsmall padding-horz-xxsmall border-top border-gray-light row horz-align-left">
+                            class="ext nowrap padding-vert-xsmall padding-horz-xxsmall border-top border-gray-light row horz-align-left">
                             <span><i class="bi bi-clock-fill" style="padding-right:10px;"></i>{{ course.duration
                                 }}</span>
                         </li>
                         <li
-                            class="nowrap padding-vert-xsmall padding-horz-xxsmall border-top border-gray-light row horz-align-left">
+                            class="ext nowrap padding-vert-xsmall padding-horz-xxsmall border-top border-gray-light row horz-align-left">
                             <i class="bi bi-bar-chart" style="padding-right:10px;"></i>{{ course.difficulty }}
                         </li>
                         <li
-                            class="nowrap padding-vert-xsmall padding-horz-xxsmall border-top border-gray-light row horz-align-left">
+                            class="ext nowrap padding-vert-xsmall padding-horz-xxsmall border-top border-gray-light row horz-align-left">
                             <i class="bi bi-globe" style="padding-right:10px;"></i>English
                         </li>
                         <li
-                            class="nowrap padding-vert-xsmall padding-horz-xxsmall border-top border-gray-light row horz-align-left">
+                            class="ext nowrap padding-vert-xsmall padding-horz-xxsmall border-top border-gray-light row horz-align-left">
                             <i class="bi bi-coin" style="padding-right:10px;"></i>{{ course.free_option }}
                         </li>
                     </ul>
@@ -97,6 +120,69 @@
             </div>
             {% endfor %}
     </section>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    <script type="text/javascript">
+
+
+
+
+        $(document).ready(function () {
+
+            $("button").click(function (event) {
+                event.preventDefault();
+                $(this).find('span').toggleClass("bi bi-bookmark-fill");
+                $(this).find('span').toggleClass("bi bi-bookmark");
+            });
+
+            $(".favouriteButton").click(function () {
+                var course_id = this.id;
+                var like = 0;
+                var text = $(this).find('span').attr('class')
+
+                console.log(course_id)
+                console.log(like)
+                console.log(text)
+                if ( text == "bi-bookmark-fill bi"  ) {
+                    like = 1;
+                } else {
+                    like = 0;
+                }
+                console.log(like)
+                console.log(text)
+                $.ajax({
+                    url: '/likeunlike',
+                    type: 'post',
+                    data: { course_id: course_id, type: like },
+                    dataType: 'json',
+                    success: function (data) {
+                    },
+                    error: function(error) {
+        // Handle any errors that occur during the AJAX request
+        console.log(error);
+      }
+                });
+            });
+            const truncateText = (selector, maxLength) => {
+                const elements = document.querySelectorAll(selector);
+
+                elements.forEach(element => {
+                    const text = element.textContent;
+                    if (text.length > maxLength) {
+                        const truncatedText = text.slice(0, maxLength) + '...';
+                        element.textContent = truncatedText;
+                    }
+                });
+            };
+
+            truncateText('.postcard__preview-txt', 150);
+        });
+
+    </script>
+
     {% endblock app_content %}
 </body>
 

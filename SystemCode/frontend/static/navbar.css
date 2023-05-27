@@ -1376,7 +1376,7 @@ body {
 }
 
 .dropbtn {
-  background-color: orangered;
+  background-color: hsl(235, 70%, 60%);
   color: white;
   padding: 16px;
   font-size: 16px;
@@ -1407,7 +1407,7 @@ body {
 }
 
 .dropdown-content a:hover {
-  background-color: orangered;
+  background-color: hsl(247, 35%, 19%);
   color: #f1f1f1;
 }
 
@@ -1416,7 +1416,7 @@ body {
 }
 
 .dropdown:hover .dropbtn {
-  background-color: orangered;
+  background-color: hsl(247, 35%, 19%);
 }
 
 

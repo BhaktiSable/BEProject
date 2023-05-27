@@ -12,7 +12,7 @@ import sqlite3
 from sklearn.metrics.pairwise import cosine_similarity
 
 # Check & Query
-filename = r'C:\Users\nehab\Desktop\Be project\BEProject\SystemCode\instance\mydb.db'
+filename = r'C:\Users\nehab\Desktop\Be project\BEProject-Bhakti\BEProject-Bhakti\SystemCode\instance\mydb.db'
 table_name = 'course'
 sqlite_conn = sqlite3.connect(filename)
 
