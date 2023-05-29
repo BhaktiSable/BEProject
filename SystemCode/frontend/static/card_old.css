@@ -118,7 +118,7 @@ a:hover {
 
 
 /* Cards */
-.postcard {
+.postcard1 {
     flex-wrap: wrap;
     display: flex;
     box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
@@ -130,9 +130,7 @@ a:hover {
     margin: 2%;
 }
 
-.light {
-    background-color: #e1e5ea;
-}
+
 
 
 
@@ -174,7 +172,7 @@ h1 {
 
 
 
-.postcard__text {
+.postcard__text1 {
     padding: 1.5rem;
     position: relative;
     display: flex;
@@ -183,9 +181,8 @@ h1 {
 }
 
 
-.postcard__preview-txt {
-    overflow: hidden;
-    text-overflow: ellipsis;
+.postcard__preview-txt1 {
+   
     text-align: justify;
     height: 100%;
     width: 100%;
@@ -243,11 +240,11 @@ ul {
 }
 
 @media screen and (min-width: 769px) {
-    .postcard {
+    .postcard1 {
         flex-wrap: inherit;
     }
 
-    .postcard>.postcard__title {
+    .postcard1>.postcard__title {
         font-size: 2rem;
     }
 
@@ -261,7 +258,7 @@ ul {
 
     }
 
-    .postcard__text {
+    .postcard__text1 {
         padding: 3rem;
         width: 100%;
     }
@@ -272,11 +269,11 @@ ul {
 }
 
 @media screen and (min-width: 1024px) {
-    .postcard__text {
+    .postcard__text1 {
         padding: 1rem 1.5rem;
     }
 
-    .postcard__text:before {
+    .postcard__text1:before {
         content: "";
         position: absolute;
         display: block;
@@ -290,25 +287,7 @@ body {
     background: #eee
 }
 
-.product-image {
-    width: 100%
-}
 
-.dot {
-    height: 7px;
-    width: 7px;
-    margin-left: 6px;
-    margin-right: 6px;
-    margin-top: 3px;
-    background-color: blue;
-    border-radius: 50%;
-    display: inline-block
-}
-
-.spec-1 {
-    color: #938787;
-    /* font-size: 15px */
-}
 
 h5 {
     font-weight: 400

@@ -139,7 +139,7 @@
         $(document).ready(function() {
           $(".write-review-button").click(function() {
             var button = $(this);
-            var course_id = button.data('id');
+            var course_id = button.attr('id');
             var completed = 0;
             var text = button.find('.completion-status').text();
       

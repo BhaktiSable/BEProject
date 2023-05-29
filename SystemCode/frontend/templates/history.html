@@ -18,17 +18,13 @@
     <link rel="stylesheet" type="text/css" href="../static/history.css">
     <link rel="stylesheet" type="text/css" href="../static/card_old.css">
     <style>
-        <!-- .main
-        {
-            row-gap: 10px;
-        }
-        -->
+  
 
     </style>
 </head>
 
 <body style="line-height:3px">
-    {% extends 'base.html' %}
+    <!-- {% extends 'base.html' %} -->
     {% import "bootstrap/wtf.html" as wtf %}
     {% block navbar %}
     <div class="container-fluid">
@@ -41,15 +37,15 @@
     </div>
         <div class="result-container">
             {% for i in range(nquery) %}
-            <div class="postcard">
-                <div class="postcard__text">
-                    <div class="postcard__preview-txt">
+            <div class="postcard1">
+                <div class="postcard__text1">
+                    <div class="postcard__preview-txt1">
                         <h3>Search Time</h3>
                         <h4><i>{{ output_list[i][4] }}</i></h4>
                     </div>
                 </div>
-                <div class="postcard__text">
-                    <div class="postcard__preview-txt">
+                <div class="postcard__text1">
+                    <div class="postcard__preview-txt1">
                         <h4>Topic: {{ output_list[i][0] }}</h4>
                         <h4>Duration: {{ output_list[i][1] }}</h4>
                         <h4>Difficulty: {{ output_list[i][2] }}</h4>

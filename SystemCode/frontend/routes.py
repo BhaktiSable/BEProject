@@ -312,8 +312,8 @@ def coursedisplay(CourseID):
     for item in fav_query:
         favlist.append(item.courseID)
 
-    comp_query = Completed.query.filter(and_(Completed.userID == current_id, Completed.courseID == CourseID)).first()
-    is_completed = comp_query is not None
+    comp_query = Completed().query.filter(and_(Completed.userID == current_id, Completed.courseID == CourseID)).first()
+    is_completed = comp_query
     
 
     course.difficulty = difficulty.get(course.difficulty, "Unknown")
@@ -410,6 +410,7 @@ def mycourse():
     comp_list = []
     for item in fav_query:
         fav_list.append(Course.query.filter_by(courseID=item.courseID).first())
+        print(fav_list)
     for item in comp_query:
         comp_list.append(Course.query.filter_by(courseID=item.courseID).first())
     difficulty = {0: "Beginner", 1: "Intermediate", 2: "Advanced"}
@@ -417,6 +418,11 @@ def mycourse():
     free_option = {0: "Paid", 1: "Free"}
     platform = {0:'AWS',1:'dataCamp',2:'Edureka',3:'Edx',4:'freecodeCamp',5:'FutureLearn',6:'Independent',7:'Linkedin',8:'Microsoft',9:'Pluralsight',10:'Udacity',11:'Udemy',12:'Coursera'}
     for course in fav_list:
+        course.difficulty = difficulty.get(course.difficulty, "Unknown")
+        course.duration = duration.get(course.duration, "Unknown")
+        course.free_option = free_option.get(course.free_option, "Unknown")
+        course.platform=platform.get(course.platform,"Unkown")
+    for course in comp_list:
         course.difficulty = difficulty.get(course.difficulty, "Unknown")
         course.duration = duration.get(course.duration, "Unknown")
         course.free_option = free_option.get(course.free_option, "Unknown")
