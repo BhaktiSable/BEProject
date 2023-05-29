@@ -31,8 +31,9 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="../static/coursedispaly.css">
-    <link rel="stylesheet" href="../static/star_rating.css">
-    <title>course dispaly page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <title>Course Details</title>
 
 
 </head>
@@ -59,10 +60,16 @@
                     <div class="kkk">
                         <ul class="button-list">
 
-                            <li><button class="write-review-button"> <span class="span"><i class="bi bi-folder-plus"
+                            <li><button class="write-review-button_0"> <span class="span"><i class="bi bi-folder-plus"
                                             style="padding-right:  10px; font-size: 18px; font-weight: 400;"></i>Add to
                                         list</span> </button></li>
-                            <li><button class="write-review-button">Mark Complete</button></li>
+
+                            <li>
+                                <button class="write-review-button" id="{{ course.courseID }}" type="button">
+                                    <span class="completion-status">{{ 'Completed' if is_completed else 'Mark Complete' }}</span>
+                                </button>
+                            </li>
+
 
                         </ul>
 
@@ -78,8 +85,8 @@
 
                 <div><img src="{{course.image_url}}"></div>
                 <div>
-                    <a href="{{course.url}}">
-                        <button class="go_to">
+                    <a href="{{course.url}}" style="text-decoration: none;">
+                        <button class="go_to ">
 
                             Go to Class<i style="margin-right: 8px;"></i><i class="bi bi-arrow-right-circle"></i>
                         </button>
@@ -112,11 +119,6 @@
             </div>
 
         </div>
-
-
-
-
-
         <div class="item i3">
             <div class="medium-up-head-3">
                 <p><b>Description:</b></p>
@@ -132,7 +134,54 @@
 
 
     </div>
-    <script src="../static/starrating.js"></script>
+    
+    <script type="text/javascript">
+        $(document).ready(function() {
+          $(".write-review-button").click(function() {
+            var button = $(this);
+            var course_id = button.data('id');
+            var completed = 0;
+            var text = button.find('.completion-status').text();
+      
+            console.log(course_id);
+            console.log(completed);
+            console.log(text);
+      
+            if (text === "Mark Complete") {
+              completed = 1;
+              button.find('.completion-status').text("Completed");
+            } else {
+              completed = 0;
+              button.find('.completion-status').text("Mark Complete");
+            }
+      
+            console.log(completed);
+            console.log(text);
+      
+            var csrftoken = $('meta[name=csrf-token]').attr('content'); // Retrieve CSRF token from HTML meta tag
+      
+            $.ajax({
+              url: '/complete',
+              type: 'post',
+              headers: {
+                'X-CSRF-Token': csrftoken // Include CSRF token in the request headers
+              },
+              data: {
+                'course_id': course_id, // Pass the course_id parameter
+                'type': completed
+              },
+              dataType: 'json',
+              success: function(data) {
+                // Handle the success response if needed
+              },
+              error: function(error) {
+                // Handle any errors that occur during the AJAX request
+                console.log(error);
+              }
+            });
+          });
+        });
+      </script>
 </body>
 
 </html>

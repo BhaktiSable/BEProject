@@ -85,7 +85,7 @@
 .result-btn {
     min-height: 40px;
     max-width: max-content;
-    font-size: 0.8rem;
+    font-size: 1.5rem;
     font-weight: 800;
     display: flex;
     align-items: center;
@@ -93,6 +93,7 @@
     padding: 5px 20px;
     border-radius: var(--radius-6);
     transition: var(--transition-1);
+    margin-top: 5%;
 }
 
 .btn-primary {
@@ -126,6 +127,7 @@ a:hover {
     overflow: hidden;
     position: relative;
     color: #050505;
+    margin: 2%;
 }
 
 .light {
@@ -147,6 +149,7 @@ h1,
 
 h1 {
     color: #140707;
+    margin-left: 2% ;
 }
 
 .head {
@@ -217,7 +220,7 @@ h1 {
     width: 25%;
 }
 
-
+/* 
 li {
     list-style-type: none;
     padding: inherit;
@@ -228,8 +231,13 @@ li {
     margin-left: 2px;
     border-radius: 3px;
 
+} */
+.ext
+{
+    list-style-type: none;
+    padding: inherit;
+    margin-right: 1rem !important;
 }
-
 ul {
     padding: 0.5rem;
 }
@@ -261,15 +269,7 @@ ul {
     .extraInfo {
         border-left: none;
     }
-
-
-
-
 }
-
-
-
-
 
 @media screen and (min-width: 1024px) {
     .postcard__text {
@@ -285,12 +285,6 @@ ul {
         height: 130%;
         /* width: 55px; */
     }
-
-
-
-
-
-
 }
 body {
     background: #eee

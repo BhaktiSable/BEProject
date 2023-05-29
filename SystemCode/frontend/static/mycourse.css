@@ -1,13 +1,12 @@
 .nav {
     margin-top: 10%;
     justify-content: center !important;
-    
 }
 .nav-link
 {
     width: 50%;
     /* display: flex;
     justify-content: center !important; */
-    padding-left: 25% !important;
+    padding-left: 20% !important;
     font-weight: 700 !important;
 }

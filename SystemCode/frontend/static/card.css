@@ -269,15 +269,7 @@ ul {
     .extraInfo {
         border-left: none;
     }
-
-
-
-
 }
-
-
-
-
 
 @media screen and (min-width: 1024px) {
     .postcard__text {
@@ -293,12 +285,6 @@ ul {
         height: 130%;
         /* width: 55px; */
     }
-
-
-
-
-
-
 }
 body {
     background: #eee

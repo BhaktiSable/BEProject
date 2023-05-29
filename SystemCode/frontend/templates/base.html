@@ -36,6 +36,60 @@
     margin-top: 20%;
 }
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("button").click(function (event) {
+                event.preventDefault();
+                $(this).find('span').toggleClass("bi bi-bookmark-fill");
+                $(this).find('span').toggleClass("bi bi-bookmark");
+            });
+
+            $(".favouriteButton").click(function () {
+                var course_id = this.id;
+                var like = 0;
+                var text = $(this).find('span').attr('class')
+
+                console.log(course_id)
+                console.log(like)
+                console.log(text)
+                if (text == "bi-bookmark-fill bi") {
+                    like = 1;
+                } else {
+                    like = 0;
+                }
+                console.log(like)
+                console.log(text)
+                $.ajax({
+                    url: '/likeunlike',
+                    type: 'post',
+                    data: { course_id: course_id, type: like },
+                    dataType: 'json',
+                    success: function (data) {
+                    },
+                    error: function (error) {
+                        // Handle any errors that occur during the AJAX request
+                        console.log(error);
+                    }
+                });
+            });
+            const truncateText = (selector, maxLength) => {
+                const elements = document.querySelectorAll(selector);
+
+                elements.forEach(element => {
+                    const text = element.textContent;
+                    if (text.length > maxLength) {
+                        const truncatedText = text.slice(0, maxLength) + '...';
+                        element.textContent = truncatedText;
+                    }
+                });
+            };
+
+            truncateText('.postcard__preview-txt', 150);
+        });
+
+    </script>
 
     </head>
 
@@ -71,7 +125,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>

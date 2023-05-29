@@ -59,11 +59,21 @@ fieldset {
     margin-top: 5%;
     border-color: var(--space)
 } */
-.bttn:hover {
-    background-color: hsl(247, 35%, 19%);
-    color: white;
+
+.btn-default {
+    background-color: var(--ultramarine-blue);
+    color: var(--white);
+    padding-left: 45% !important;
 }
 
+.btn-default:is(:hover, :focus) {
+    background-color: var(--space-cadet-2);
+    color: white !important;
+}
+.bttn:is(:hover, :focus) {
+    background-color: var(--space-cadet-2);
+    color: white !important;
+}
 /* .bttn p:hover {
     color:white;
   } */
@@ -86,5 +96,4 @@ label {
     display:inline !important;
     align-items: flex-start;
     height: 10%;
-    
 }

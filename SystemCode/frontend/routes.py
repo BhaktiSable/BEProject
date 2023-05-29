@@ -2,7 +2,7 @@ from flask import jsonify, render_template, session,url_for,redirect,flash,reque
 from frontend import app
 from frontend.forms import SignupForm, LoginForm,SurveyForm,CareerInterstForm
 from flask_login import login_user, login_required, current_user, logout_user
-from frontend.models import User, Query, Course, Favourite, Recommendation
+from frontend.models import User, Query, Course, Favourite, Recommendation,Completed
 from frontend import bcrypt, db
 from frontend.models import User,Course
 # from Recommendation import recommend
@@ -14,6 +14,7 @@ import pytz
 import numpy as np
 import config
 from Recommendation.recommend_job import recommend_job_role_based
+from sqlalchemy import and_
 # Initialize for Default 10 most popular courses
 rating_tuples = db.session.query(Course.popularity_index).order_by(Course.courseID)
 rating_data = np.array([x[0] for x in rating_tuples])
@@ -299,18 +300,28 @@ def results2():
 @app.route('/coursedisplay/<CourseID>')
 @login_required
 def coursedisplay(CourseID):
-    print("innnnnnnnnnnnnn")
+    current_id = current_user.userID
     course=(Course.query.filter_by(courseID=CourseID).first())
     difficulty = {0: "Beginner", 1: "Intermediate", 2: "Advanced"}
     duration = {0: "Short", 1: "Medium", 2: "Long"}
     free_option = {0: "Paid", 1: "Free"}
     platform = {0:'AWS',1:'dataCamp',2:'Edureka',3:'Edx',4:'freecodeCamp',5:'FutureLearn',6:'Independent',7:'Linkedin',8:'Microsoft',9:'Pluralsight',10:'Udacity',11:'Udemy',12:'Coursera'}
+
+    fav_query = Favourite().query.filter_by(userID=current_id)
+    favlist = []
+    for item in fav_query:
+        favlist.append(item.courseID)
+
+    comp_query = Completed.query.filter(and_(Completed.userID == current_id, Completed.courseID == CourseID)).first()
+    is_completed = comp_query is not None
+    
+
     course.difficulty = difficulty.get(course.difficulty, "Unknown")
     course.duration = duration.get(course.duration, "Unknown")
     course.free_option = free_option.get(course.free_option, "Unknown")
     course.platform=platform.get(course.platform,"Unkown")
 
-    return render_template('coursedisplay.html',course=course)
+    return render_template('coursedisplay.html', course=course,favlist=favlist, is_completed=is_completed)
 @app.route('/history', methods=['GET'])
 @login_required
 def history():
@@ -371,10 +382,10 @@ def displaypastresult(query_count):
     query_result_list = []
     for item in query_result:
         query_result_list.append(Course.query.filter_by(courseID=item.courseID).first())
+    difficulty = {0: "Beginner", 1: "Intermediate", 2: "Advanced"}
+    duration = {0: "Short", 1: "Medium", 2: "Long"}
     free_option = {0: "Paid", 1: "Free"}
-    platform = {0: "Edx", 1: "Udemy", 2: "Coursera"}
-    difficulty = {0: "Any", 1: "Beginner", 2: "Intermediate", 3: "Advanced"}
-    duration = {0: "Any", 1: "Short", 2: "Medium", 3: "Long"}
+    platform = {0:'AWS',1:'dataCamp',2:'Edureka',3:'Edx',4:'freecodeCamp',5:'FutureLearn',6:'Independent',7:'Linkedin',8:'Microsoft',9:'Pluralsight',10:'Udacity',11:'Udemy',12:'Coursera'}
     for course in query_result_list:
         course.difficulty = difficulty.get(course.difficulty, "Unknown")
         course.duration = duration.get(course.duration, "Unknown")
@@ -387,31 +398,37 @@ def displaypastresult(query_count):
     return render_template('results.html', title=title, query_count=query_count, rec_list=query_result_list,
                            favlist=favlist, history=True)
 
-@app.route('/mycourse')
+@app.route('/mycourse',methods=['GET', 'POST'])
+@login_required
 def mycourse():
     if not current_user.is_authenticated:
         return redirect(url_for('/'))
-
-    # Render the list of favourited courses
     current_id = current_user.userID
     fav_query = Favourite().query.filter_by(userID=current_id)
     fav_list = []
+    comp_query = Completed().query.filter_by(userID=current_id)
+    comp_list = []
     for item in fav_query:
         fav_list.append(Course.query.filter_by(courseID=item.courseID).first())
+    for item in comp_query:
+        comp_list.append(Course.query.filter_by(courseID=item.courseID).first())
     difficulty = {0: "Beginner", 1: "Intermediate", 2: "Advanced"}
     duration = {0: "Short", 1: "Medium", 2: "Long"}
     free_option = {0: "Paid", 1: "Free"}
-    platform = {0: "Edx", 1: "Udemy", 2: "Coursera"}
+    platform = {0:'AWS',1:'dataCamp',2:'Edureka',3:'Edx',4:'freecodeCamp',5:'FutureLearn',6:'Independent',7:'Linkedin',8:'Microsoft',9:'Pluralsight',10:'Udacity',11:'Udemy',12:'Coursera'}
     for course in fav_list:
         course.difficulty = difficulty.get(course.difficulty, "Unknown")
         course.duration = duration.get(course.duration, "Unknown")
         course.free_option = free_option.get(course.free_option, "Unknown")
-        course.platform = platform.get(course.platform, "Unknown")
-    return render_template('mycourse.html',fav_list=fav_list, favourites=True)
+        course.platform=platform.get(course.platform,"Unkown")
+    return render_template('mycourse.html',fav_list=fav_list,comp_list=comp_list, mycourse=True)
+
 
 @app.route('/Mark_Completed')
+@login_required
 def Mark_Completed():
     return render_template('Mark_Completed.html')
+    
 
 @app.route('/likeunlike', methods=['POST', 'GET'])
 @login_required
@@ -435,6 +452,31 @@ def likeunlike():
             db.session.commit()
     return jsonify('Success')
 
+@app.route('/complete', methods=['POST'])
+@login_required
+def complete():
+    if not current_user.is_authenticated:
+        return redirect(url_for('/'))
+
+    current_id = current_user.userID
+
+    if request.method == 'POST':
+        course_id = request.form['course_id']
+        completed = request.form['type']
+
+        print(current_id)
+        print(completed)
+        print(course_id)
+        entry = Completed(userID=current_id, courseID=course_id)
+        if completed == '1':
+            db.session.add(entry)
+            db.session.commit()
+        elif completed == '0':
+            entry = Completed.query.filter_by(userID=current_id, courseID=course_id).first()
+            db.session.delete(entry)
+            db.session.commit()
+
+    return jsonify('Success')
 
 
 # @app.route('/index')
