@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/query.css">
+
+</head>
+
+<body>
+
+    {% extends 'base.html' %}
+    {% block navbar %}
+    
+    <div class="container-fluid">
+        {% include 'navbar.html' %}
+    </div>
+    {% endblock %}
+    {% block app_content %}
+    <div id="outside" style="background-image: url('../static/image/hero-bg.jpg')">
+        <form id="survey-form" method="POST" action="" >
+            {{form.hidden_tag()}}
+            {% import 'bootstrap/wtf.html' as wtf %}
+            <h1 id="title">Enter Your Preferences</h1>
+            <fieldset>
+                <div>
+                    {{ wtf.form_field(form.topic) }}
+                </div>
+                <div class="field">
+                    <b>{{ form.duration.label }}</b>
+                    <div >{{ wtf.form_field(form.duration) }}</div>
+                </div>
+                <div class="field">
+                    <b>{{ form.difficulty.label }}</b>
+                    {{ wtf.form_field(form.difficulty) }}
+                </div>
+                <div class="field">
+                    <b>{{ form.freePaid.label }}</b>
+                    {{ wtf.form_field(form.freePaid) }}
+                </div>
+                <div class="bttn">
+                    {{wtf.form_field(form.recommend)}}
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+
+
+
+
+
+    <!-- <div class="query-container">
+        <br>
+        <form method="POST" ,action="{{url_for('query')}}">
+            <div class="jumbotron">
+                <div class="form">
+                    <div class="form-group">
+                        {% import 'bootstrap/wtf.html' as wtf %}
+                        {{ wtf.quick_form(form) }}
+                        {{ wtf.form_field(form.topic) }}
+                        {{ form.duration.label }}</b>
+                        {{ wtf.form_field(form.duration) }}
+                        <b>{{ form.difficulty.label }}</b>
+                        {{ wtf.form_field(form.difficulty) }}
+                        <b>{{ form.freePaid.label }}</b>
+                        {{ wtf.form_field(form.freePaid) }}
+                        {{ wtf.form_field(form.recommend) }} 
+                        <br>
+                        <button class="btn" type="submit">{{wtf.form_field(form.recommend)}}</button> 
+                    </div>
+                </div>
+            </div>
+            <br>
+        </form>
+    </div> -->
+    {% endblock app_content %}
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+
+</html>

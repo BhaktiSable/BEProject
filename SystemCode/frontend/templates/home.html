@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+    <link rel="stylesheet" type="text/css" href="../static/team.css">
+</head>
+<body>
+
+{% extends 'base.html' %}
+
+{% block navbar %}
+    <div class="container-fluid">
+    {% include 'navbar.html' %}
+    </div>
+{% endblock %}
+{% block app_content %}
+<main>
+    <article>
+      <!-- 
+        - #HERO
+      -->
+      <section class="hero" id="home" aria-label="hero" style="background-image: url('../static/image/hero-bg.jpg')">
+        <div class="container">
+
+            {% include  "hero.html" %}
+        </div>
+      </section>
+      <!-- 
+        - #CATEGORY
+      -->
+
+      <section class="section category" aria-label="category">
+        <div class="container">
+
+            {% include  "category.html" %}
+        </div>
+      </section>
+      <!-- 
+        - #ABOUT
+      -->
+
+      <!-- <section class="section about" id="about" aria-label="about">
+        <div class="container">
+
+            {% include  "about.html" %}
+        </div>
+      </section> -->
+      <!-- 
+        - #CTA
+      -->
+
+      <section class="team">
+        <div class="center">
+    
+          {% include  "team.html" %}
+        </div>
+      </section>
+    </article>
+  </main>
+{% endblock %}
+</body>
+</html>
