@@ -13,10 +13,13 @@ from sklearn.metrics.pairwise import cosine_similarity
 import os
 import config
 # Check & Query
-filename = 'C:/Users/DELL/Desktop/Course_Recommendation/BEProject/SystemCode/instance/mydb.db'
+# filename = 'C:/Users/DELL/Desktop/Course_Recommendation/BEProject/SystemCode/instance/mydb.db'
+# table_name = 'course'
+# sqlite_conn = sqlite3.connect(filename)
+
+filename = os.path.join(config.basedir, 'instance/mydb.db')
 table_name = 'course'
 sqlite_conn = sqlite3.connect(filename)
-
 
 # Query Table
 rawdata = pd.read_sql('SELECT * FROM ' + table_name, sqlite_conn, index_col='courseID')

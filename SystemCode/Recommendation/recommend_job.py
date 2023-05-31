@@ -10,9 +10,14 @@ from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 import sqlite3
 from sklearn.metrics.pairwise import cosine_similarity
+import os
 import config
 # Check & Query
-filename = 'C:/Users/DELL/Desktop/Course_Recommendation/BEProject/SystemCode/instance/mydb.db'
+# filename = 'C:/Users/DELL/Desktop/Course_Recommendation/BEProject/SystemCode/instance/mydb.db'
+# table_name = 'course'
+# sqlite_conn = sqlite3.connect(filename)
+
+filename = os.path.join(config.basedir, 'instance/mydb.db')
 table_name = 'course'
 sqlite_conn = sqlite3.connect(filename)
 
