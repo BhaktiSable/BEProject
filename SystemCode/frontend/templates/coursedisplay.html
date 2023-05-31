@@ -5,24 +5,35 @@
 
 
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="a.CSS">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css"
         integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+    integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
 
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <!-- Bootstrap Font Icon CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,6 +42,7 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="../static/coursedispaly.css">
+    <link rel="stylesheet" href="../static/modal.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <title>Course Details</title>
@@ -58,15 +70,15 @@
                         </div>
                     </div>
                     <div class="kkk">
-                        <ul class="button-list">
+                        <ul class="button-list" style="font-weight: 100px;">
 
-                            <li><button class="write-review-button_0"> <span class="span"><i class="bi bi-folder-plus"
-                                            style="padding-right:  10px; font-size: 18px; font-weight: 400;"></i>Add to
-                                        list</span> </button></li>
+                            <li><button class="write-review-button_0" id="{{ course.courseID }}" type="button"> <span
+                                        class="span">Save</span> </button></li>
 
                             <li>
-                                <button class="write-review-button" id="{{ course.courseID }}" type="button">
-                                    <span class="completion-status">{{ 'Completed' if is_completed else 'Mark Complete' }}</span>
+                                <button class="write-review-button" id="{{ course.courseID }}" type="button" data-toggle="modal" data-target="#exampleModal">
+                                    <span class="completion-status">{{ 'Completed' if is_completed else 'Mark Complete'
+                                        }}</span>
                                 </button>
                             </li>
 
@@ -134,54 +146,212 @@
 
 
     </div>
-    
+
+      
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Skills learned through this course-</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form  action="/submit_skill" method="POST">
+
+                    <input type="text" id="myInput" name="skill_text" onkeyup="myFunction()" placeholder="Search for names.."
+                        title="Type in a name">
+
+                    <ul id="myUL">
+                        <script type="text/javascript">
+                            var skill_list = ['Agile methodologies', 'DHCP', 'Virtualization', '3D modeling and animation', 'Data manipulation',
+                                'C#', 'Data migration', 'Security and compliance', 'Graphic design tools', 'Tableau', 'Linux',
+                                'Google Cloud Platform', 'Risk management', 'Big data', 'CSS', 'SQL Server', 'Penetration testing',
+                                'Data analysis', 'TCP/IP', 'Time series analysis', 'Game design principles', 'User interface design',
+                                'Nmap', 'IT governance and compliance', 'Perl', 'Unity', 'Architecture design', 'Programming languages', 'MySQL',
+                                'Statistical analysis', 'Auto Scaling', 'Load Balancing', 'Flask', 'Git', 'Information architecture', 'Wireframing',
+                                'Wireframing and prototyping tools', 'Fedora', 'ELB', 'Deep learning', 'Debugging', 'ASP.NET', 'Waterfall',
+                                'UI/UX design', 'Database backup and recovery', 'DNS', 'Kubernetes', 'Software development life cycle (SDLC)',
+                                'PyTorch', 'Security', 'Scikit-learn', 'Amazon S3', 'EFS', 'Interaction design', 'Regression analysis', 'SciPy',
+                                'Back-end development', 'Containerization technologies', 'Project management', 'SQL', 'Communication skills',
+                                'Systems analysis', 'Pandas', 'Metasploit', 'Risk assessment', 'Model tuning', 'Responsive design', 'Web development',
+                                'SEO', 'VPN', 'Gameplay mechanics', 'Oracle', 'Critical thinking', 'Ruby', 'Node.js', 'macOS', 'Spark', 'Data structures',
+                                'Routing protocols', 'Testing', 'Juniper', 'Visual design', 'Vue.js', 'Cisco', 'Antivirus software', 'Problem solving', 'QlikView',
+                                'REST APIs', 'Cloud computing', 'CentOS', 'Looker', 'Prometheus', 'Vendor management', 'Web performance optimization',
+                                'Continuous integration/continuous deployment (CI/CD)', 'IT strategy development', 'LVM', 'PostgreSQL', 'Jenkins',
+                                'RedHat', 'Express', 'Route 53', 'Security analysis', 'Windows Server', 'Penetration Testing', 'Python', 'React',
+                                'Google Analytics', 'Firewall management', 'Intrusion detection', 'Semantic UI', 'NumPy', 'Unit testing', 'Swift',
+                                'IDS/IPS', 'Kotlin', 'Azure', 'PHP', 'Database security', 'Ubuntu', 'Game engines and frameworks', 'ELK Stack',
+                                'Prototyping', 'Materialize', 'Requirement gathering', 'Scripting languages', 'SIEM', 'LAN', 'Data cleaning',
+                                'Bash Shell', 'Bootstrap', 'Automation tools', 'Ansible', 'TensorFlow', 'Windows', 'SSL/TLS', 'Docker', 'Algorithms',
+                                'User experience design', 'Typography', 'Matplotlib', 'Data visualization', 'Agile', 'Programming', 'Grafana', 'Hadoop',
+                                'DevOps', 'C++', 'React Native', 'HTML', 'Power BI', 'Vulnerability Scanning', 'Vue.js Vuex', 'Usability testing',
+                                'API development', 'HTML/CSS', 'Database management', 'MongoDB', 'Proxy Servers', 'JavaScript', 'WAN', 'Django',
+                                'Statistical modeling', 'Objective-C', 'jQuery', 'Seaborn', 'EC2', 'React Redux', 'Data wrangling', 'ANOVA',
+                                'Zabbix', 'Shell scripting', 'Reinforcement learning', '.NET', 'AWS', 'Firewalls', 'Statistics',
+                                'Front-end development', 'OpenStack', 'Database performance tuning', 'Mobile app development', 'Java',
+                                'Active Directory', 'Monitoring and logging tools', 'Color theory', 'Experimentation', 'Ionic',
+                                'Terraform', 'Game physics', 'Object-oriented programming (OOP)', 'Networking', 'Network design',
+                                'Electron', 'Hypothesis testing', 'Excel', 'Process improvement', 'R', 'Vulnerability scanners',
+                                'Spring', 'Keras', 'Machine learning', 'Express.js', 'Budgeting and financial management',
+                                'Database design', 'Angular', 'Ruby on Rails', 'NLP'];
+                    
+                            var skillListContainer = document.getElementById("myUL");
+                    
+                            for (var i = 0; i < skill_list.length; i++) {
+                                var skill = skill_list[i];
+                    
+                                var listItem = document.createElement("li");
+                                var link = document.createElement("a");
+                                var checkbox = document.createElement("input");
+                                checkbox.type = "checkbox";
+                                checkbox.id = "skill" + i;
+                                checkbox.name = "skills";
+                                checkbox.value = skill;
+                    
+                                var label = document.createElement("label");
+                                label.htmlFor = "skill" + i;
+                                label.textContent = skill;
+                    
+                                link.appendChild(checkbox);
+                                link.appendChild(label);
+                                listItem.appendChild(link);
+                                skillListContainer.appendChild(listItem);
+                            }
+                        </script>
+
+
+
+
+
+                        <script>
+                            function myFunction() {
+                                var input, filter, ul, li, a, i, txtValue;
+                                input = document.getElementById("myInput");
+                                filter = input.value.toUpperCase();
+                                ul = document.getElementById("myUL");
+                                li = ul.getElementsByTagName("li");
+                                for (i = 0; i < li.length; i++) {
+                                    a = li[i].getElementsByTagName("a")[0];
+                                    txtValue = a.textContent || a.innerText;
+                                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                        li[i].style.display = "";
+                                    } else {
+                                        li[i].style.display = "none";
+                                    }
+                                }
+                            }
+                        </script>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
     <script type="text/javascript">
-        $(document).ready(function() {
-          $(".write-review-button").click(function() {
-            var button = $(this);
-            var course_id = button.attr('id');
-            var completed = 0;
-            var text = button.find('.completion-status').text();
-      
-            console.log(course_id);
-            console.log(completed);
-            console.log(text);
-      
-            if (text === "Mark Complete") {
-              completed = 1;
-              button.find('.completion-status').text("Completed");
-            } else {
-              completed = 0;
-              button.find('.completion-status').text("Mark Complete");
-            }
-      
-            console.log(completed);
-            console.log(text);
-      
-            var csrftoken = $('meta[name=csrf-token]').attr('content'); // Retrieve CSRF token from HTML meta tag
-      
-            $.ajax({
-              url: '/complete',
-              type: 'post',
-              headers: {
-                'X-CSRF-Token': csrftoken // Include CSRF token in the request headers
-              },
-              data: {
-                'course_id': course_id, // Pass the course_id parameter
-                'type': completed
-              },
-              dataType: 'json',
-              success: function(data) {
-                // Handle the success response if needed
-              },
-              error: function(error) {
-                // Handle any errors that occur during the AJAX request
-                console.log(error);
-              }
+        $(document).ready(function () {
+            $(".write-review-button").click(function () {
+                var button = $(this);
+                var course_id = button.attr('id');
+                var completed = 0;
+                var text = button.find('.completion-status').text();
+
+                console.log(course_id);
+                console.log(completed);
+                console.log(text);
+
+                if (text === "Mark Complete") {
+                    completed = 1;
+                    button.find('.completion-status').text("Completed");
+                } else {
+                    completed = 0;
+                    button.find('.completion-status').text("Mark Complete");
+                }
+
+                console.log(completed);
+                console.log(text);
+
+                var csrftoken = $('meta[name=csrf-token]').attr('content'); // Retrieve CSRF token from HTML meta tag
+
+                $.ajax({
+                    url: '/complete',
+                    type: 'post',
+                    headers: {
+                        'X-CSRF-Token': csrftoken // Include CSRF token in the request headers
+                    },
+                    data: {
+                        'course_id': course_id, // Pass the course_id parameter
+                        'type': completed
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        // Handle the success response if needed
+                    },
+                    error: function (error) {
+                        // Handle any errors that occur during the AJAX request
+                        console.log(error);
+                    }
+                });
             });
-          });
         });
-      </script>
+    </script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".write-review-button_0").click(function () {
+                var button = $(this);
+                var course_id = button.attr('id');
+                var like = 0;
+                var text = button.find('.span').text();
+
+                console.log(course_id);
+                console.log(like);
+                console.log(text);
+
+                if (text === "Save") {
+                    like = 1;
+                    button.find('.span').text("Saved");
+                } else {
+                    like = 0;
+                    button.find('.span').text("Save");
+                }
+
+                console.log(like);
+                console.log(text);
+
+                var csrftoken = $('meta[name=csrf-token]').attr('content'); // Retrieve CSRF token from HTML meta tag
+
+                $.ajax({
+                    url: '/likeunlike',
+                    type: 'post',
+                    headers: {
+                        'X-CSRF-Token': csrftoken // Include CSRF token in the request headers
+                    },
+                    data: {
+                        'course_id': course_id, // Pass the course_id parameter
+                        'type': like
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        // Handle the success response if needed
+                    },
+                    error: function (error) {
+                        // Handle any errors that occur during the AJAX request
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

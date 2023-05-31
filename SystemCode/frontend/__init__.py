@@ -13,6 +13,18 @@ app = Flask(__name__)
 import os
 SECRET_KEY = os.urandom(32)
 app.config['SECRET_KEY'] = SECRET_KEY
+
+
+# BASE DIRECTORY
+basedir = os.path.abspath(os.path.dirname(__file__))
+
+
+
+
+    # DATABASE CONFIGURATION
+# SQLALCHEMY_DATABASE_URI =  'sqlite:///' + os.path.join(basedir, 'instance','mydb.db')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS']= False
+app.config['SECRET_KEY'] = SECRET_KEY
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///mydb.db'
 
 db = SQLAlchemy(app)

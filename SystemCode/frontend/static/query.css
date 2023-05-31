@@ -63,7 +63,13 @@ fieldset {
 .btn-default {
     background-color: var(--ultramarine-blue);
     color: var(--white);
-    padding-left: 45% !important;
+    width: 100%;
+    /* padding-left: 45% !important; */
+    display: block !important;
+}
+.btn-default{
+    min-height: 55px;
+    max-width: 100% !important;
 }
 
 .btn-default:is(:hover, :focus) {
@@ -96,4 +102,14 @@ label {
     display:inline !important;
     align-items: flex-start;
     height: 10%;
+}
+
+/* label.control-label
+{
+    font-size: 1.6rem !important;
+} */
+
+.form-control
+{
+    font-size: 1.6rem !important;
 }

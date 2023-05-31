@@ -66,7 +66,8 @@ class Query(db.Model, UserMixin):
     query_free_option = db.Column(db.Integer, nullable=False)
 
 class skill(db.Model):
-    userID = db.Column(db.Integer, primary_key=True)
+    skillid = db.Column(db.Integer, primary_key=True)
+    userID = db.Column(db.Integer,nullable=False)
     skill=db.Column(db.Text)
 
 class career_path(db.Model, UserMixin):

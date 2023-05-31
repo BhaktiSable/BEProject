@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Account Settings UI Design</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/Profile.css">
+</head>
+
+<body>
+
+    {% block navbar %}
+    <div class="container-fluid">
+        {% include 'navbar.html' %}
+    </div>
+    {% endblock %}
+
+
+    {% block app_content %}
+    <section class="py-5 my-5">
+        <div class="pr-container">
+            <div class="skills">
+                <h1>Skills You Gained</h1>
+                <ul>
+                    {% for skill in skills %}
+                    <li>{{ skill.skill }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="course-info">
+                
+                <h2><a href="{{url_for('mycourse')}}">Saved Courses</a></h2>
+                <p>Total Saved Courses: {{ fav_list|length }}</p>
+
+                <h2><a href="{{url_for('mycourse')}}">Completed Courses</a></h2>
+                <p>Total Completed Courses: {{ comp_list|length }}</p>
+                <!--  <table>
+                <tr>
+                <td>
+                    <h2><a href="{{url_for('mycourse')}}">Saved Courses</a></h2>
+                    <p>Total Saved Courses: {{ fav_list|length }}</p>
+                </td>
+                <td>
+                    <h2><a href="{{url_for('mycourse')}}">Completed Courses</a></h2>
+                    <p>Total Completed Courses: {{ comp_list|length }}</p>
+                </td>
+         </tr>
+        </table> -->
+            </div>
+        </div>
+
+        <div class="card chart-card">
+            <div class="card-header">
+                Level Wise Courses
+            </div>
+            <div class="chart-container">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+        <script>
+            var compList = JSON.parse('{{ comp_list_json|safe }}');
+            var xValues = ["Beginner", "Intermediate", "Advanced"];
+            var yValues = [0, 0, 0];
+            var barColors = ["#b91d47", "#00aba9", "#2b5797"];
+
+            // Count the occurrences of each difficulty level in compList
+            for (var i = 0; i < compList.length; i++) {
+                var difficulty = compList[i];
+                if (difficulty === "Beginner") {
+                    yValues[0]++;
+                } else if (difficulty === "Intermediate") {
+                    yValues[1]++;
+                } else if (difficulty === "Advanced") {
+                    yValues[2]++;
+                }
+            }
+
+            new Chart("myChart", {
+                type: "pie",
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        backgroundColor: barColors,
+                        data: yValues
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: "Level Wise Courses"
+                    }
+                }
+            });
+        </script>
+    </section>
+    {% endblock app_content %}
+</body>
+
+</html>

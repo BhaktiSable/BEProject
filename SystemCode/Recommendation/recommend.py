@@ -10,11 +10,13 @@ from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 import sqlite3
 from sklearn.metrics.pairwise import cosine_similarity
-
+import os
+import config
 # Check & Query
 filename = 'C:/Users/DELL/Desktop/Course_Recommendation/BEProject/SystemCode/instance/mydb.db'
 table_name = 'course'
 sqlite_conn = sqlite3.connect(filename)
+
 
 # Query Table
 rawdata = pd.read_sql('SELECT * FROM ' + table_name, sqlite_conn, index_col='courseID')
@@ -125,9 +127,9 @@ def load_pickle(filename):
 
 # CONFIGURATION FOR RECOMMENDER MODULE
 # DATA FILE PATH
-tfidf_data_filepath = ('C:/Users/DELL/Desktop/Course_Recommendation/BEProject/SystemCode/Recommendation/FeatureMap/tfidf_data.pickle')
-categorical_data_filepath = 'C:/Users/DELL/Desktop/Course_Recommendation/BEProject/SystemCode/Recommendation/FeatureMap/categorical_data.pickle'
-tfidf_vectorizer_filepath = 'C:/Users/DELL/Desktop/Course_Recommendation/BEProject/SystemCode/Recommendation/FeatureMap/tfidf_vectorizer.pickle'
+tfidf_data_filepath=config.tfidf_data_filepath 
+categorical_data_filepath =config.categorical_data_filepath 
+tfidf_vectorizer_filepath =config.tfidf_vectorizer_filepath
 # TEXT BASED RECOMMENDATION THRESHOLD
 text_thres = 0.5
 # MINIMUM FREE COURSE COUNT THRESHOLD

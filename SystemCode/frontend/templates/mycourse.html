@@ -132,7 +132,7 @@
                                 <li class="tag__item">
                                     <button class="btn btn-default swap pull-right favouriteButton" type="button"
                                         id="{{course.courseID}}">
-                                        {% if course.courseID in fav_list %}
+                                        {% if course['courseID'] in fav_list %}
                                             <span class="bi bi-bookmark-fill"
                                                 style="padding-right:  10px; font-size: 18px; font-weight: 400;"></span>
                                         {% else %}

@@ -4,7 +4,6 @@ from wtforms import StringField, PasswordField, SubmitField, BooleanField, Radio
 from wtforms.validators import DataRequired, Length, ValidationError,EqualTo
 from frontend.models import User,Course
 import email_validator
-
 class SignupForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired(), Length(min=1, max=200)])
     email=EmailField('Email',validators=[DataRequired(),validators.Email()])

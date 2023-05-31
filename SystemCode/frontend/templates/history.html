@@ -24,7 +24,7 @@
 </head>
 
 <body style="line-height:3px">
-    <!-- {% extends 'base.html' %} -->
+    {% extends 'base.html' %}
     {% import "bootstrap/wtf.html" as wtf %}
     {% block navbar %}
     <div class="container-fluid">
@@ -32,10 +32,10 @@
     </div>
     {% endblock %}
     {% block app_content %}
-    <div style="margin-top: 10%;">
+    <div style="margin-top: 10%;" >
         <h1>Your Search history</h1>
     </div>
-        <div class="result-container">
+        <div class="result-container" >
             {% for i in range(nquery) %}
             <div class="postcard1">
                 <div class="postcard__text1">

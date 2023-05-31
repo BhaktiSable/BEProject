@@ -2,7 +2,7 @@ from flask import jsonify, render_template, session,url_for,redirect,flash,reque
 from frontend import app
 from frontend.forms import SignupForm, LoginForm,SurveyForm,CareerInterstForm
 from flask_login import login_user, login_required, current_user, logout_user
-from frontend.models import User, Query, Course, Favourite, Recommendation,Completed
+from frontend.models import User, Query, Course, Favourite, Recommendation,Completed,skill
 from frontend import bcrypt, db
 from frontend.models import User,Course
 # from Recommendation import recommend
@@ -15,6 +15,8 @@ import numpy as np
 import config
 from Recommendation.recommend_job import recommend_job_role_based
 from sqlalchemy import and_
+from sqlalchemy.exc import IntegrityError
+import json
 # Initialize for Default 10 most popular courses
 rating_tuples = db.session.query(Course.popularity_index).order_by(Course.courseID)
 rating_data = np.array([x[0] for x in rating_tuples])
@@ -485,9 +487,87 @@ def complete():
     return jsonify('Success')
 
 
+
+@app.route('/submit_skill', methods=['POST'])
+@login_required
+def submit_skill():
+    skill_list = request.form.getlist('skills')
+    current_id = current_user.userID
+    courseID=Course.courseID
+    fav_query = Favourite().query.filter_by(userID=current_id)
+    fav_list = []
+    comp_query = Completed().query.filter_by(userID=current_id)
+    comp_list = []
+    for item in fav_query:
+        fav_list.append(Course.query.filter_by(courseID=item.courseID).first())
+    for item in comp_query:
+        comp_list.append(Course.query.filter_by(courseID=item.courseID).first())
+    try:
+        # Iterate over the submitted skills and save them to the database
+        for skill_text in skill_list:
+            existing_skill = skill.query.filter_by(userID=current_id, skill=skill_text).first()
+            if not existing_skill:
+                new_skill = skill(userID=current_id, skill=skill_text)
+                db.session.add(new_skill)
+        
+        db.session.commit()
+        flash('Skills saved successfully!', category='success')
+    except IntegrityError:
+        db.session.rollback()
+        flash('An error occurred while saving the skills.', category='error')
+    
+    difficulty = {0: "Beginner", 1: "Intermediate", 2: "Advanced"}
+    duration = {0: "Short", 1: "Medium", 2: "Long"}
+    free_option = {0: "Paid", 1: "Free"}
+    platform = {0:'AWS',1:'dataCamp',2:'Edureka',3:'Edx',4:'freecodeCamp',5:'FutureLearn',6:'Independent',7:'Linkedin',8:'Microsoft',9:'Pluralsight',10:'Udacity',11:'Udemy',12:'Coursera'}
+    for course in fav_list:
+        course.difficulty = difficulty.get(course.difficulty, "Unknown")
+        course.duration = duration.get(course.duration, "Unknown")
+        course.free_option = free_option.get(course.free_option, "Unknown")
+        course.platform=platform.get(course.platform,"Unkown")
+    for course in comp_list:
+        course.difficulty = difficulty.get(course.difficulty, "Unknown")
+        course.duration = duration.get(course.duration, "Unknown")
+        course.free_option = free_option.get(course.free_option, "Unknown")
+        course.platform=platform.get(course.platform,"Unkown")
+    
+    return render_template('mycourse.html',fav_list=fav_list,comp_list=comp_list,mycourse=True)
+
+@app.route('/Profile')
+@login_required
+def Profile():
+    # Retrieve skills from the database
+    current_id = current_user.userID
+    skills = skill.query.filter_by(userID=current_id).all()
+    fav_query = Favourite().query.filter_by(userID=current_id)
+    fav_list = []
+    comp_query = Completed().query.filter_by(userID=current_id)
+    comp_list = []
+    for item in fav_query:
+        fav_list.append(Course.query.filter_by(courseID=item.courseID).first())
+    for item in comp_query:
+        comp_list.append(Course.query.filter_by(courseID=item.courseID).first())
+    difficulty = {0: "Beginner", 1: "Intermediate", 2: "Advanced"}
+    duration = {0: "Short", 1: "Medium", 2: "Long"}
+    free_option = {0: "Paid", 1: "Free"}
+    platform = {0:'AWS',1:'dataCamp',2:'Edureka',3:'Edx',4:'freecodeCamp',5:'FutureLearn',6:'Independent',7:'Linkedin',8:'Microsoft',9:'Pluralsight',10:'Udacity',11:'Udemy',12:'Coursera'}
+    for course in fav_list:
+        course.difficulty = difficulty.get(course.difficulty, "Unknown")
+        course.duration = duration.get(course.duration, "Unknown")
+        course.free_option = free_option.get(course.free_option, "Unknown")
+        course.platform=platform.get(course.platform,"Unkown")
+    for course in comp_list:
+        course.difficulty = difficulty.get(course.difficulty, "Unknown")
+        course.duration = duration.get(course.duration, "Unknown")
+        course.free_option = free_option.get(course.free_option, "Unknown")
+        course.platform=platform.get(course.platform,"Unkown")
+    comp_list_json = json.dumps([course.difficulty for course in comp_list])
+    return render_template('Profile.html', skills=skills,fav_list=fav_list,comp_list=comp_list,comp_list_json=comp_list_json,Profile=True)
+
 # @app.route('/index')
 # def team():
 #     return render_template('team.html')
+
 
 @app.route('/logout')
 def logout():
